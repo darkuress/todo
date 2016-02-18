@@ -1,3 +1,3 @@
-# myServer
+# todo
 
-this will be my server
+this will be my todo server
