@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, td {
+    border: 1px solid black;
+}
+</style>
+</head>
+<body>
+
+<p>Click the button to add a new row at the first position of the table and then add cells and content.</p>
+
+<table id="myTable">
+	<thead>
+	<tr>
+		<td>Check</td>
+		<td>Status</td>
+		<td>Content</td>
+		<td>Requested By</td>
+	</tr>
+	</thead>
+</table>
+<br><br><br><br><br>
+<input id="content" placeholder="What to do"/><input id="person" placeholder="Requested By"/>
+<button onclick="createRow()">Insert</button><button onclick="deleteRow()">Delete</button>
+
+
+
+
+<script>
+function createRow() {
+    var table = document.getElementById("myTable");
+	var checkBoxNum = document.getElementById("myTable").rows.length;
+    var row = table.insertRow(-1);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+	var cell3 = row.insertCell(2);
+	var cell4 = row.insertCell(3);
+    cell1.innerHTML = '<input type="checkbox" id="check' + checkBoxNum + '">';
+	cell2.innerHTML = '<select id="select' + checkBoxNum + '"><option value="wtg">wtg</option><option value="ip">ip</option><option value="done">done</option><option value="fix">fix</option></select>'
+	cell3.innerHTML = document.getElementById("content").value;
+	cell4.innerHTML = document.getElementById("person").value;
+}
+function deleteRow(){
+    var table = document.getElementById("myTable");
+  	var checkBoxNum = document.getElementById("myTable").rows.length;
+
+    for(count = 1; count < checkBoxNum; count++){
+        var row = table.rows[count];
+        var chkbox = row.cells[0].getElementsByTagName('input')[0];
+        if('checkbox' == chkbox.type && true == chkbox.checked) {
+            table.deleteRow(count);
+        }                        
+    }
+}
+
+</script>
+
+</body>
+</html>
