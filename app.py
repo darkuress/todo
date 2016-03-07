@@ -10,8 +10,8 @@ def index():
 
 @app.route('/updateData', methods=['POST'])
 def updateData():
-    print str(request.form['data'])
-    return str(request.form['data'])
-
+    x = request.form['data']
+    print str(x)
+    
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port = 5002)
