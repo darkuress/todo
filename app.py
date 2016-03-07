@@ -8,11 +8,13 @@ def index():
     templateData = {}
     return render_template('todo.html', **templateData)
 
-@app.route('/updateData')
+@app.route('/updateData', methods=['POST'])
 def updateData():
     try:
-        return str(request.args['data'])
+        print str(request.form['data'])
+        return str(request.form['data'])
     except KeyError:
         return "Missing parameter"
+    
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port = 5002)
