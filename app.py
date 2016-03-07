@@ -10,11 +10,8 @@ def index():
 
 @app.route('/updateData', methods=['POST'])
 def updateData():
-    try:
-        print str(request.form['data'])
-        return str(request.form['data'])
-    except KeyError:
-        return "Missing parameter"
-    
+    print str(request.form['data'])
+    return str(request.form['data'])
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port = 5002)
