@@ -11,8 +11,10 @@ table, td {
 
 <p>Click the button to add a new row at the first position of the table and then add cells and content.</p>
 
-<br><br><br><br><br>
 <form action="/updateData" method="post" name="updateDataForm">
+    <input id="content" name = 'content' placeholder="What to do"/><input id="person" name = "person" placeholder="Requested By"/>
+    <button onclick="createRow()" >Insert</button><button onclick="deleteRow()" type="submit">Delete</button>
+
     <table id="myTable">
         <thead>
         <tr>
@@ -23,9 +25,7 @@ table, td {
         </tr>
         </thead>
     </table>
-
-    <input id="content" name = 'content' placeholder="What to do"/><input id="person" name = "person" placeholder="Requested By"/>
-    <button onclick="createRow()" >Insert</button><button onclick="deleteRow()" type="submit">Delete</button>
+    <br><br><br><br><br>
     
     <script>
     function createRow() {
@@ -40,8 +40,8 @@ table, td {
         cell2.innerHTML = '<select id="select' + checkBoxNum + ' name="select' + checkBoxNum + '"><option value="wtg">wtg</option><option value="ip">ip</option><option value="done">done</option><option value="fix">fix</option></select>'
         cell3.innerHTML = document.getElementById("content").value;
         cell4.innerHTML = document.getElementById("person").value;
-        document.innerHTML = '<input type="hidden" id="aaa" name = "aaa" value = "fadsfasdf">'
-        docment.updateDataForm.submit()
+        document.updateDataForm.innerHTML = '<input type="hidden" id="aaa" name = "aaa" value = "fadsfasdf">'
+        document.updateDataForm.submit()
         //document.write( JSON.stringify(udpateData()) );
     }
     
