@@ -10,7 +10,7 @@ def index():
 
 @app.route('/updateData', methods=['POST'])
 def updateData():
-    print 'request....'
+    print 'request....', request
     assert request.path == '/updateData'
     assert request.method == 'POST'
     #-asdfasdf
