@@ -11,7 +11,8 @@ def index():
 @app.route('/updateData', methods=['POST', 'GET'])
 def updateData():
     print 'request....'
-    request.environ['CONTENT_TYPE'] = 'application/something_Flask_ignores'
+    with app.request_context(environ):
+        assert request.method == 'POST'
     #-asdfasdf
     x = request.data
     print 'data is.....', str(x)
