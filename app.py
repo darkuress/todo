@@ -12,7 +12,7 @@ def index():
 def updateData():
     print 'request....', request
     #-asdfasdf
-    data = request.form
+    data = request.form.keys()
     print 'data is.....', str(data)
     return render_template('todo.html')
     
