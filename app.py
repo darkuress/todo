@@ -14,8 +14,10 @@ def updateData():
     #-asdfasdf
     name=request.form['yourname']
     email=request.form['youremail']
+	content=request.form['content']
     print 'data is.....', str(name)
     print 'data is.....', str(email)
+	print 'data is.....', str(content)
     return render_template('todo.html')
     
 if __name__ == '__main__':
