@@ -12,8 +12,10 @@ def index():
 def updateData():
     print 'request....', request
     #-asdfasdf
-    x = request.data
-    print 'data is.....', str(x)
+    name=request.form['yourname']
+    email=request.form['youremail']
+    print 'data is.....', str(name)
+	print 'data is.....', str(email)
     return render_template('todo.html')
     
 if __name__ == '__main__':
