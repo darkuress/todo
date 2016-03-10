@@ -11,7 +11,7 @@ def index():
 @app.route('/updateData', methods=['POST'])
 def updateData():
     print 'request....'
-    x = request.form['data']
+    x = request.data
     print str(x)
     
 if __name__ == '__main__':
