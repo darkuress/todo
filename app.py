@@ -13,8 +13,10 @@ def updateData():
     print 'request....', request
     #-asdfasdf
     data = request.form
+    data2 = request.data
     writingJson(data)
     print 'data is.....', str(data)
+    print 'data2 is.....', str(data2)
     return render_template('todo.html')
 
 def writingJson(data):
