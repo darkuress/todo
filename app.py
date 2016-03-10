@@ -11,7 +11,7 @@ def index():
 @app.route('/updateData', methods=['POST'])
 def updateData():
     print 'request....'
-    x = request.data
+    x = request.form['data']
     print 'data is.....', str(x)
     return render_template('todo.html')
     
