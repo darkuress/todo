@@ -44,9 +44,12 @@ table, td {
         var personTyped = document.getElementById("person").value;
         //document.updateDataForm.innerHTML = '<input type="hidden" id="check' + checkBoxNum + '" name="check' + checkBoxNum + '">';
         //document.updateDataForm.innerHTML = '<input type="hidden" id="select' + checkBoxNum + '" name="select' + checkBoxNum + '">';
-        document.updateDataForm.innerHTML = '<input type="hidden" id="content' + checkBoxNum + '" name="content' + checkBoxNum + '" value ="'+ contentTyped +'">';
-        document.updateDataForm.innerHTML = '<input type="hidden" id="person' + checkBoxNum + '" name="person' + checkBoxNum + '" value ="'+ personTyped +'">';
-        document.updateDataForm.innerHTML = '<input type="hidden" id="ccc" name="bbb" value ="aaa">';
+        //document.updateDataForm.innerHTML = '<input type="hidden" id="content' + checkBoxNum + '" name="content' + checkBoxNum + '" value ="'+ contentTyped +'">';
+        //document.updateDataForm.innerHTML = '<input type="hidden" id="person' + checkBoxNum + '" name="person' + checkBoxNum + '" value ="'+ personTyped +'">';
+        document.updateDataForm.innerHTML = '<input type="hidden" \
+                                              id="data' + checkBoxNum + '" \
+                                              name="data' + checkBoxNum + '" \
+                                              value ="unckd__'+ personTyped +' __ '+contentTyped+' __ wtg">';
         document.updateDataForm.submit()
         //document.write( JSON.stringify(udpateData()) );
     }
