@@ -11,10 +11,8 @@ def index():
 @app.route('/updateData', methods=['POST'])
 def updateData():
     print 'request....', request
-    assert request.path == '/updateData'
-    assert request.method == 'POST'
     #-asdfasdf
-    x = request.data
+    x = request.form
     print 'data is.....', str(x)
     return render_template('todo.html')
     
