@@ -15,8 +15,8 @@ def updateData():
     name=request.form['yourname']
     email=request.form['youremail']
     print 'data is.....', str(name)
-	print 'data is.....', str(email)
-    return render_template('todo.html')
+    print 'data is.....', str(email)
+	return render_template('todo.html')
     
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port = 5002)
