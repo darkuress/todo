@@ -11,7 +11,9 @@ def index():
 @app.route('/updateData', methods=['POST'])
 def updateData():
     print 'request....'
-    x = request.get_data()
+    request.environ['CONTENT_TYPE'] = 'application/something_Flask_ignores'
+    #-asdfasdf
+    x = request.data
     print 'data is.....', str(x)
     return render_template('todo.html')
     
