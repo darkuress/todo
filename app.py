@@ -8,7 +8,7 @@ def index():
     templateData = {}
     return render_template('todo.html', **templateData)
 
-@app.route('/updateData', methods=['POST'])
+@app.route('/updateData', methods=['POST', 'GET'])
 def updateData():
     print 'request....'
     request.environ['CONTENT_TYPE'] = 'application/something_Flask_ignores'
