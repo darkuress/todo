@@ -10,6 +10,7 @@ def index():
 
 @app.route('/updateData', methods=['POST'])
 def updateData():
+    print 'request....'
     x = request.form['data']
     print str(x)
     
