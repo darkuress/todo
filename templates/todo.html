@@ -40,12 +40,12 @@ table, td {
         cell2.innerHTML = '<select id="select' + checkBoxNum + '" name="select' + checkBoxNum + '"><option value="wtg">wtg</option><option value="ip">ip</option><option value="done">done</option><option value="fix">fix</option></select>'
         cell3.innerHTML = document.getElementById("content").value;
         cell4.innerHTML = document.getElementById("person").value;
-        var content = document.getElementById("content").value;
-        var person = document.getElementById("person").value;
+        var contentTyped = document.getElementById("content").value;
+        var personTyped = document.getElementById("person").value;
         //document.updateDataForm.innerHTML = '<input type="hidden" id="check' + checkBoxNum + '" name="check' + checkBoxNum + '">';
         //document.updateDataForm.innerHTML = '<input type="hidden" id="select' + checkBoxNum + '" name="select' + checkBoxNum + '">';
-        document.updateDataForm.innerHTML = '<input type="hidden" id="content' + checkBoxNum + '" name="content' + checkBoxNum + '" value ="'+ content +'">';
-        document.updateDataForm.innerHTML = '<input type="hidden" id="person' + checkBoxNum + '" name="person' + checkBoxNum + '" value ="'+ person +'">';
+        document.updateDataForm.innerHTML = '<input type="hidden" id="content' + checkBoxNum + '" name="content' + checkBoxNum + '" value ="'+ contentTyped +'">';
+        document.updateDataForm.innerHTML = '<input type="hidden" id="person' + checkBoxNum + '" name="person' + checkBoxNum + '" value ="'+ personTyped +'">';
         document.updateDataForm.submit()
         //document.write( JSON.stringify(udpateData()) );
     }
