@@ -14,7 +14,7 @@ def updateData():
     #-asdfasdf
     data = request.form
     writingJson(data)
-    print 'data is.....', str(data['content'])
+    print 'data is.....', str(data)
     return render_template('todo.html')
 
 def writingJson(data):
