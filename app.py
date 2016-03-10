@@ -8,10 +8,10 @@ def index():
     templateData = {}
     return render_template('todo.html', **templateData)
 
-@app.route('/updateData', methods=['POST', 'GET'])
+@app.route('/updateData', methods=['POST'])
 def updateData():
     print 'request....'
-    with app.request_context(environ):
+    with app.request_context('/updateData', methods=['POST']):
         assert request.method == 'POST'
     #-asdfasdf
     x = request.data
