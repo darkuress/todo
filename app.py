@@ -11,8 +11,8 @@ def index():
 @app.route('/updateData', methods=['POST'])
 def updateData():
     print 'request....'
-    with app.request_context('/updateData', method=['POST']):
-        assert request.method == 'POST'
+    assert request.path == '/updateData'
+    assert request.method == 'POST'
     #-asdfasdf
     x = request.data
     print 'data is.....', str(x)
