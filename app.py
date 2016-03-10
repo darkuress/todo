@@ -14,7 +14,7 @@ def updateData():
     #-asdfasdf
     name=request.form['yourname']
     email=request.form['youremail']
-	content=request.form['content']
+    content=request.form['content']
     print 'data is.....', str(name)
     print 'data is.....', str(email)
     print 'data is.....', str(content)
