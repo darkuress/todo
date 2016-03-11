@@ -70,6 +70,7 @@ def argParser(data):
     new_data['who']    = str(org_data.split('__')[1])
     new_data['what']   = str(org_data.split('__')[2])
     new_data['status'] = str(org_data.split('__')[3])
+    new_data['action'] = str(org_data.split('__')[4])
     all_status = ['wtg', 'ip', 'done', 'fix']
     new_data['all_status'] = []
     for status in all_status:
