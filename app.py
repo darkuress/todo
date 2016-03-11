@@ -10,8 +10,8 @@ def index():
     first page
     """
     templateData = {'templateData' : []}
-    if readJson():
-        init_data = readJson()
+    init_data = readJson()
+    if init_data:
         if init_data.has_key('templateData'):
             templateData = init_data
         else:
@@ -26,8 +26,9 @@ def updateData():
     """
     data = request.form
     old_data = readJson()
-    if old_data.has_key('templateData'):
-        templateData = oldData
+    if old_data:
+        if old_data.has_key('templateData'):
+            templateData = oldData
     else:
         templateData = {'templateData' : []}
     templateData['templateData'].append(argParser(data))
