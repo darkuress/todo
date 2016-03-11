@@ -15,10 +15,6 @@
     th, td {
     padding: 10px;
 
-    th {
-        background-color: #4CAF50;
-        color: white;
-    }
 }
 </style>
 </head>
@@ -29,12 +25,12 @@
 <form action="/updateData" method="post" id="updateDataForm">
     <table id="myTable">
         <thead>
-        <th>
+        <tr>
             <td>Check</td>
             <td>Status</td>
             <td>Content</td>
             <td>Requested By</td>
-        </th>
+        </tr>
 	{% for one in templateData %}
         <tr>
             <td>'<input type="checkbox"></td>
