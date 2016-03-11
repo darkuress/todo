@@ -75,7 +75,7 @@ def argParser(data):
         if status == new_data['status']:
             new_data['all_status'].append({"s":status, "tf":True})
         else:
-            new_data['all_status'].append({"s":status, "rd":False})
+            new_data['all_status'].append({"s":status, "tf":False})
     
     return new_data
 
