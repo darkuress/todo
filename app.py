@@ -19,7 +19,8 @@ def updateData():
     data = request.form
     writingJson(data)
     
-    templateData = argParser(data)
+    templateData = {'templateData' : []}
+    templateData['templateData'].append(argParser(data))
     print templateData
     
     return render_template('todo.html', **templateData)

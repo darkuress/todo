@@ -20,11 +20,12 @@ table, td {
             <td>Content</td>
             <td>Requested By</td>
         </tr>
+	{% for one in templateData %}
         <tr>
-            <td>{{chked}}</td>
-            <td>{{status}}</td>
-            <td>{{what}}</td>
-            <td>{{who}}</td>
+            <td>{{one.chked}}</td>
+            <td>{{one.status}}</td>
+            <td>{{one.what}}</td>
+            <td>{{one.who}}</td>
         </tr>
         </thead>
     </table>
