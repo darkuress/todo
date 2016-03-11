@@ -41,7 +41,10 @@ table, td {
     
     <script>
     function createRow() {
-  
+        var table = document.getElementById("myTable");
+        var checkBoxNum = document.getElementById("myTable").rows.length;
+        var contentTyped = document.getElementById("content").value;
+        var personTyped = document.getElementById("person").value;        
         document.getElementById("updateDataForm").innerHTML = '<input type="hidden" \
                                                                 id="data' + checkBoxNum + '" \
                                                                 name="data' + checkBoxNum + '" \
