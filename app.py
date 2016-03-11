@@ -64,6 +64,7 @@ def argParser(data):
     """
     dataKey = data.keys()[0]
     org_data = data[dataKey]
+    print '........', data
     new_data = {}
     new_data['chked']  = str(org_data.split('__')[0])
     new_data['who']    = str(org_data.split('__')[1])
