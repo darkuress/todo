@@ -25,7 +25,7 @@ table, td {
             <td>'<input type="checkbox"></td>
             <td><select>
                 {% for status in one.all_status %}
-                    <option value="{{status.s}}" selected="{{status.tf}"}>{{status.s}}</option>
+                    <option value="{{status.s}}" selected={{status.tf}}>{{status.s}}{{status.tf}}</option>
                 {% endfor %}
                 </select>
             <td>{{one.what}}</td>
