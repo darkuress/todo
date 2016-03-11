@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import json
+import os
 
 app = Flask(__name__)
 
@@ -9,11 +10,12 @@ def index():
     first page
     """
     templateData = {'templateData' : []}
-    init_data = readJson()
-    if init_data.has_key('templateData'):
-        templateData = init_data
-    else:
-        templateData = {'templateData' : []}
+    if readJson():
+        init_data = readJson()
+        if init_data.has_key('templateData'):
+            templateData = init_data
+        else:
+            templateData = {'templateData' : []}
     
     return render_template('todo.html', **templateData)
 
@@ -47,9 +49,13 @@ def readJson():
     """
     read json file
     """
-    with open('data.txt', 'r') as outfile:
-        json_data = json.load(outfile)
-    return json_data
+    if os.path.exists('data.txt'):       
+        with open('data.txt', 'r') as outfile:
+            json_data = json.load(outfile)
+        return json_data
+    else:
+        return None
+    
         
 def argParser(data):
     """
