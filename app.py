@@ -8,7 +8,9 @@ def index():
     """
     first page
     """
-    templateData = {}
+    templateData = {'templateData' : []}
+    init_data = readJson()
+    templateData['templateData'].append(init_data)
     return render_template('todo.html', **templateData)
 
 @app.route('/updateData', methods=['POST'])
@@ -32,6 +34,14 @@ def writingJson(data):
     with open('data.txt', 'w') as outfile:
         json.dump(data, outfile)
 
+def readJson():
+    """
+    read json file
+    """
+    with open('data.txt', 'r') as outfile:
+        json_data = json.load(outfile)
+    return json_data
+        
 def argParser(data):
     """
     parse requested data
