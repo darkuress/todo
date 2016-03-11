@@ -23,12 +23,11 @@ table, td {
 	{% for one in templateData %}
         <tr>
             <td>{{one.chked}}</td>
-            <td><select >
+            <td><select>
                 {% for status in one.all_status %}
-                    <option value="{{one.status}}">{{one.status}}</option>
+                    <option value="{{status.s}}" selected={{status.tf}}>{{status.s}}</option>
                 {% endfor %}
                 </select>
-            <td>{{one.status}}</td>
             <td>{{one.what}}</td>
             <td>{{one.who}}</td>
         </tr>

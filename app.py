@@ -54,7 +54,13 @@ def argParser(data):
     new_data['who']    = str(org_data.split('__')[1])
     new_data['what']   = str(org_data.split('__')[2])
     new_data['status'] = str(org_data.split('__')[3])
-    new_data['all_status'] = ['wtg', 'ip', 'done', 'fix']
+    all_status = ['wtg', 'ip', 'done', 'fix']
+    new_data['all_status'] = []
+    for status in all_status:
+        if status == new_data['status']:
+            new_data['all_status'].append({"s":status, "tf":True})
+        else:
+            new_data['all_status'].append({"s":status, "rd":False})
     
     return new_data
 
