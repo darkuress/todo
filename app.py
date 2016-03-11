@@ -28,7 +28,7 @@ def updateData():
     old_data = readJson()
     if old_data:
         if old_data.has_key('templateData'):
-            templateData = oldData
+            templateData = old_data
     else:
         templateData = {'templateData' : []}
     templateData['templateData'].append(argParser(data))
