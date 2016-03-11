@@ -10,8 +10,11 @@ def index():
     """
     templateData = {'templateData' : []}
     init_data = readJson()
-    print 'init', init_data
-    templateData['templateData'].append(argParser(init_data))
+    if init_data.has_key('templateData'):
+        templateData = init_data
+    else:
+        templateData = {'templateData' : []}
+    
     return render_template('todo.html', **templateData)
 
 @app.route('/updateData', methods=['POST'])
@@ -20,10 +23,15 @@ def updateData():
     update request
     """
     data = request.form
-    writingJson(data)
-    
-    templateData = {'templateData' : []}
+    old_data = readJson()
+    if old_data.has_key('templateData'):
+        templateData = oldData
+    else:
+        templateData = {'templateData' : []}
     templateData['templateData'].append(argParser(data))
+    
+    writingJson(templateData)
+    
     print templateData
     
     return render_template('todo.html', **templateData)
@@ -32,7 +40,7 @@ def writingJson(data):
     """
     writing JsonFile
     """
-    with open('data.txt', 'a') as outfile:
+    with open('data.txt', 'w') as outfile:
         json.dump(data, outfile)
 
 def readJson():
