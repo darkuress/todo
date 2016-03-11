@@ -10,6 +10,7 @@ def index():
     """
     templateData = {'templateData' : []}
     init_data = readJson()
+    print 'init', init_data
     templateData['templateData'].append(init_data)
     return render_template('todo.html', **templateData)
 
