@@ -74,9 +74,9 @@ def argParser(data):
     new_data['all_status'] = []
     for status in all_status:
         if status == new_data['status']:
-            new_data['all_status'].append({"s":status, "tf":True})
+            new_data['all_status'].append({"s":status, "tf":'selected'})
         else:
-            new_data['all_status'].append({"s":status, "tf":False})
+            new_data['all_status'].append({"s":status, "tf":'false'})
     
     return new_data
 
