@@ -2,8 +2,18 @@
 <html>
 <head>
 <style>
-table, td {
-    border: 1px solid black;
+    table, td, th {    
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+    
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    
+    th, td {
+    padding: 15px;
 }
 </style>
 </head>
@@ -48,7 +58,11 @@ table, td {
         document.getElementById("updateDataForm").innerHTML = '<input type="hidden" \
                                                                 id="data' + checkBoxNum + '" \
                                                                 name="data' + checkBoxNum + '" \
-                                                                value ="unckd__'+personTyped+'__'+contentTyped+'__wtg">';
+                                                                value="unckd__\
+                                                                      '+personTyped+'__\
+                                                                      '+contentTyped+'__\
+                                                                      wtg__\
+                                                                      create">';
         document.getElementById("updateDataForm").submit()
         //document.write( JSON.stringify(udpateData()) );
     }
