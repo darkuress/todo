@@ -16,7 +16,6 @@ def updateData():
     """
     update request
     """
-    #-asdfasdf
     data = request.form
     writingJson(data)
     
@@ -33,13 +32,16 @@ def writingJson(data):
         json.dump(data, outfile)
 
 def argParser(data):
+    """
+    parse requested data
+    """
     dataKey = data.keys()[0]
     org_data = data[dataKey]
     new_data = {}
-    new_data['chked'] = org_data.split('__')[0]
-    new_data['who'] = org_data.split('__')[1]
-    new_data['what'] = org_data.split('__')[2]
-    new_data['status'] = org_data.split('__')[3]
+    new_data['chked']  = str(org_data.split('__')[0])
+    new_data['who']    = str(org_data.split('__')[1])
+    new_data['what']   = str(org_data.split('__')[2])
+    new_data['status'] = str(org_data.split('__')[3])
     
     return new_data
 
