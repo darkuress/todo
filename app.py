@@ -11,7 +11,7 @@ def index():
     templateData = {'templateData' : []}
     init_data = readJson()
     print 'init', init_data
-    templateData['templateData'].append(init_data)
+    templateData['templateData'].append(argParser(init_data))
     return render_template('todo.html', **templateData)
 
 @app.route('/updateData', methods=['POST'])
@@ -54,6 +54,7 @@ def argParser(data):
     new_data['who']    = str(org_data.split('__')[1])
     new_data['what']   = str(org_data.split('__')[2])
     new_data['status'] = str(org_data.split('__')[3])
+    new_data['all_status'] = ['wtg', 'ip', 'done', 'fix']
     
     return new_data
 
