@@ -14,7 +14,10 @@
     
     th, td {
     padding: 10px;
-
+    
+    #myTable th{
+        background-color: #4CAF50;
+    }
 }
 </style>
 </head>
@@ -26,10 +29,10 @@
     <table id="myTable">
         <thead>
         <tr>
-            <td>Check</td>
-            <td>Status</td>
-            <td>Content</td>
-            <td>Requested By</td>
+            <th>Check</td>
+            <th>Status</td>
+            <th>Content</td>
+            <th>Requested By</td>
         </tr>
 	{% for one in templateData %}
         <tr>
