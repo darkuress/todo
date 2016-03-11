@@ -11,7 +11,7 @@ table, td {
 
 <p>Click the button to add a new row at the first position of the table and then add cells and content.</p>
 
-<form action="/updateData" method="post" name="updateDataForm">
+<form action="/updateData" method="post" id="updateDataForm">
     <table id="myTable">
         <thead>
         <tr>
@@ -42,11 +42,11 @@ table, td {
     <script>
     function createRow() {
   
-        document.updateDataForm.innerHTML = '<input type="hidden" \
-                                              id="data' + checkBoxNum + '" \
-                                              name="data' + checkBoxNum + '" \
-                                              value ="unckd__'+personTyped+'__'+contentTyped+'__wtg">';
-        document.updateDataForm.submit()
+        document.getElementById("updateDataForm").innerHTML = '<input type="hidden" \
+                                                                id="data' + checkBoxNum + '" \
+                                                                name="data' + checkBoxNum + '" \
+                                                                value ="unckd__'+personTyped+'__'+contentTyped+'__wtg">';
+        document.getElementById("updateDataForm").submit()
         //document.write( JSON.stringify(udpateData()) );
     }
     
