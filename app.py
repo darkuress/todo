@@ -32,7 +32,7 @@ def writingJson(data):
     """
     writing JsonFile
     """
-    with open('data.txt', 'w') as outfile:
+    with open('data.txt', 'a') as outfile:
         json.dump(data, outfile)
 
 def readJson():
