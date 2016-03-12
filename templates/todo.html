@@ -42,7 +42,7 @@
         </tr>
 	{% for one in templateData %}
         <tr>
-            <td>'<input type="checkbox"></td>
+            <td>'<input type="checkbox" id={{one.chkbx}}}></td>
             <td><select>
                 {% for status in one.all_status %}
                     <option value="{{status.s}}" {{status.tf}}>{{status.s}}</option>
@@ -72,7 +72,8 @@
                                                                       '+personTyped+'__\
                                                                       '+contentTyped+'__\
                                                                       wtg__\
-                                                                      create">';
+                                                                      create__\
+                                                                      chkbx' + checkBoxNum + '">';
         document.getElementById("updateDataForm").submit()
         //document.write( JSON.stringify(udpateData()) );
     }
