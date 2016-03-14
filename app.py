@@ -33,6 +33,7 @@ def updateData():
         templateData = {'templateData' : []}
     
     #- parse data
+    print '.......................', data
     parsed_data = argParser(data)
     print 'parsed_data : ', parsed_data
     #- append or remove data from template data
