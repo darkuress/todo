@@ -26,6 +26,7 @@ def updateData():
     """
     data = request.form
     old_data = readJson()
+    print '..........', data
     if old_data:
         if old_data.has_key('templateData'):
             templateData = old_data
