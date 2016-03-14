@@ -82,10 +82,10 @@
         var checkBoxNum = document.getElementById("myTable").rows.length;
     
         var i = 0
+        var chklist = [];
         for(count = 1; count < checkBoxNum; count++){
             var row = table.rows[count];
             var chkbox = row.cells[0].getElementsByTagName('input')[0];
-            var chklist = [];
             if('checkbox' == chkbox.type && true == chkbox.checked) {
                 //table.deleteRow(count);
                 chklist[i] = chkbox.id;
