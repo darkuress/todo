@@ -87,7 +87,7 @@
             var chklist = []
             var i = 0
             if('checkbox' == chkbox.type && true == chkbox.checked) {
-                table.deleteRow(count);
+                //table.deleteRow(count);
                 chklist[i] = chkbox.id;
                 i = i+1;
             }
@@ -103,7 +103,7 @@
                                                                 [' + chklist + ']">';
         document.getElementById("updateDataForm").submit()
         }
-        udpateData();
+        //udpateData();
     }
     
     function udpateData(){
