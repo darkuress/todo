@@ -34,9 +34,9 @@ def updateData():
     
     #- parse data
     parsed_data = argParser(data)
-    
+    print 'parsed_data : ', parsed_data
     #- append or remove data from template data
-    if parsed_data['action'] == 'create':
+    if str(parsed_data['action']) == 'create':
         templateData['templateData'].append(parsed_data)
     
     writingJson(templateData)
@@ -70,7 +70,7 @@ def argParser(data):
     """
     dataKey = data.keys()[0]
     org_data = data[dataKey]
-    print '........', data
+
     new_data = {}
     new_data['chked']  = str(org_data.split('__')[0])
     new_data['who']    = str(org_data.split('__')[1])
@@ -85,7 +85,7 @@ def argParser(data):
             new_data['all_status'].append({"s":status, "tf":'selected'})
         else:
             new_data['all_status'].append({"s":status, "tf":''})
-    
+    print 'new_data:', new_data   
     return new_data
 
 if __name__ == '__main__':
