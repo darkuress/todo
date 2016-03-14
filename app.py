@@ -38,9 +38,10 @@ def updateData():
     #- append or remove data from template data
     if parsed_data['action'] == 'create':
         templateData['templateData'].append(parsed_data)
+        
     elif parsed_data['action'] == 'delete':
         for one_temp_data in templateData['templateData']:
-            if one_temp_data['chkbx'] == parsed_data['what']:
+            if one_temp_data['chkbx'] in eval(parsed_data['what']):
                 templateData['templateData'].remove(one_temp_data)
     
     writingJson(templateData)
