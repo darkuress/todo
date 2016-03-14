@@ -42,7 +42,7 @@
         </tr>
 	{% for one in templateData %}
         <tr>
-            <td>'<input type="checkbox" id={{one.chkbx}}>{{one.chkbx}}</td>
+            <td>'<input type="checkbox" id={{one.chkbx}}></td>
             <td><select>
                 {% for status in one.all_status %}
                     <option value="{{status.s}}" {{status.tf}}>{{status.s}}</option>
@@ -92,16 +92,17 @@
                 i = i+1;
             }
         chklist.toString()
-        document.getElementById("updateDataForm").innerHTML = '<input type="hidden"\
-                                                                id="deleteList" \
-                                                                name="deleteList" \
-                                                                value="ckd__\
-                                                                [' + chklist + ']__\
-                                                                [' + chklist + ']__\
-                                                                wtg__\
-                                                                delete__\
-                                                                [' + chklist + ']">';
-        document.getElementById("updateDataForm").submit()
+        document.getElementById("updateDataForm").innerHTML = chklist
+        //document.getElementById("updateDataForm").innerHTML = '<input type="hidden"\
+        //                                                        id="deleteList" \
+        //                                                        name="deleteList" \
+        //                                                        value="ckd__\
+        //                                                        [' + chklist + ']__\
+        //                                                        [' + chklist + ']__\
+        //                                                        wtg__\
+        //                                                        delete__\
+        //                                                        [' + chklist + ']">';
+        //document.getElementById("updateDataForm").submit()
         }
         //udpateData();
     }
