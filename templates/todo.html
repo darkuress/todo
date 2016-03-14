@@ -93,17 +93,16 @@
             }
         }
         chklist.toString();
-        document.getElementById("updateDataForm").innerHTML = chklist
-        //document.getElementById("updateDataForm").innerHTML = '<input type="hidden"\
-        //                                                        id="deleteList" \
-        //                                                        name="deleteList" \
-        //                                                        value="ckd__\
-        //                                                        [' + chklist + ']__\
-        //                                                        [' + chklist + ']__\
-        //                                                        wtg__\
-        //                                                        delete__\
-        //                                                        [' + chklist + ']">';
-        //document.getElementById("updateDataForm").submit();
+        document.getElementById("updateDataForm").innerHTML = '<input type="hidden"\
+                                                                id="deleteList" \
+                                                                name="deleteList" \
+                                                                value="ckd__\
+                                                                [' + chklist + ']__\
+                                                                [' + chklist + ']__\
+                                                                wtg__\
+                                                                delete__\
+                                                                [' + chklist + ']">';
+        document.getElementById("updateDataForm").submit();
         //udpateData();
     }
     
