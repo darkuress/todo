@@ -56,7 +56,7 @@
     </table>
     <br><br><br><br><br>
 
-    <input id="content" name = 'content' placeholder="What to do"/><input id="person" name = "person" placeholder="Requested By"/>
+    <input id="content" placeholder="What to do"/><input id="person" placeholder="Requested By"/>
     <button onclick="createRow()" >Insert</button><button onclick="deleteRow()" type="submit">Delete</button>
     
     <script>
@@ -87,8 +87,8 @@
                                                                  name="content" \
                                                                  value="'+contentTyped+'">'
         document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
-                                                                 id="status' + checkBoxNum + '"\
-                                                                 name="status' + checkBoxNum + '" \
+                                                                 id="status"\
+                                                                 name="status" \
                                                                  value="wtg">'
         document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
                                                                  id="action"\
