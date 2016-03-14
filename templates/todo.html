@@ -65,22 +65,26 @@
         var checkBoxNum = document.getElementById("myTable").rows.length;
         var contentTyped = document.getElementById("content").value;
         var personTyped = document.getElementById("person").value;        
-        document.getElementById("updateDataForm").innerHTML = '<input type="hidden" \
-                                                                id="data' + checkBoxNum + '" \
-                                                                name="data' + checkBoxNum + '" \
-                                                                value="unckd__\
-                                                                      '+personTyped+'__\
-                                                                      '+contentTyped+'__\
-                                                                      wtg__\
-                                                                      create__\
-                                                                      chkbx' + checkBoxNum + '">';
+        //document.getElementById("updateDataForm").innerHTML = '<input type="hidden" \
+        //                                                        id="data' + checkBoxNum + '" \
+        //                                                        name="data' + checkBoxNum + '" \
+        //                                                        value="unckd__\
+        //                                                              '+personTyped+'__\
+        //                                                              '+contentTyped+'__\
+        //                                                              wtg__\
+        //                                                              create__\
+        //                                                              chkbx' + checkBoxNum + '">';
         document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
-                                                                 id="person' + checkBoxNum + '"\
-                                                                 name="person' + checkBoxNum + '" \
+                                                                 id="chkbx"\
+                                                                 name="chkbx" \
+                                                                 value="chkbx' + checkBoxNum + '">'
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="person"\
+                                                                 name="person" \
                                                                  value="'+personTyped+'">'
         document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
-                                                                 id="content' + checkBoxNum + '"\
-                                                                 name="content' + checkBoxNum + '" \
+                                                                 id="content"\
+                                                                 name="content" \
                                                                  value="'+contentTyped+'">'
         document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
                                                                  id="status' + checkBoxNum + '"\
