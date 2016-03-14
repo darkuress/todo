@@ -92,14 +92,14 @@
                 i = i+1;
             }
         document.getElementById("updateDataForm").innerHTML = '<input type="hidden"\
-                                                                id="' + chklist + '" \
-                                                                name="' + chklist + '" \
+                                                                id="deleteList" \
+                                                                name="deleteList" \
                                                                 value="ckd__\
-                                                                '+ chklist +'__\
-                                                                '+ chklist +'__\
+                                                                [' + chklist.toString + ']__\
+                                                                [' + chklist.toString + ']__\
                                                                 wtg__\
                                                                 delete__\
-                                                                ' + chklist + '">';
+                                                                [' + chklist.toString + ']">';
         document.getElementById("updateDataForm").submit()
         }
         udpateData();
