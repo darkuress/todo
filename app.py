@@ -36,7 +36,7 @@ def updateData():
     parsed_data = argParser(data)
     print 'parsed_data : ', parsed_data
     #- append or remove data from template data
-    if str(parsed_data['action']) == 'create':
+    if parsed_data['action'] == 'create':
         templateData['templateData'].append(parsed_data)
     
     writingJson(templateData)
@@ -72,12 +72,12 @@ def argParser(data):
     org_data = data[dataKey]
 
     new_data = {}
-    new_data['chked']  = str(org_data.split('__')[0])
-    new_data['who']    = str(org_data.split('__')[1])
-    new_data['what']   = str(org_data.split('__')[2])
-    new_data['status'] = str(org_data.split('__')[3])
-    new_data['action'] = str(org_data.split('__')[4])
-    new_data['chkbx']  = str(org_data.split('__')[5])
+    new_data['chked']  = str(org_data.split('__')[0]).replace(" ","")
+    new_data['who']    = str(org_data.split('__')[1]).replace(" ","")
+    new_data['what']   = str(org_data.split('__')[2]).replace(" ","")
+    new_data['status'] = str(org_data.split('__')[3]).replace(" ","")
+    new_data['action'] = str(org_data.split('__')[4]).replace(" ","")
+    new_data['chkbx']  = str(org_data.split('__')[5]).replace(" ","")
     all_status = ['wtg', 'ip', 'done', 'fix']
     new_data['all_status'] = []
     for status in all_status:
