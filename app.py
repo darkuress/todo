@@ -41,7 +41,7 @@ def updateData():
     elif parsed_data['action'] == 'delete':
         for one_temp_data in templateData['templateData']:
             if one_temp_data['chkbx'] == parsed_data['what']:
-                templateData.remove(one_temp_data)
+                templateData['templateData'].remove(one_temp_data)
     
     writingJson(templateData)
     
