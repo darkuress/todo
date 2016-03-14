@@ -90,17 +90,17 @@
                 table.deleteRow(count);
                 chklist[i] = chkbox.id;
                 i = i+1;
-            document.getElementById("updateDataForm").innerHTML = '<input type="hidden"\
-                                                                    id="' + chklist + '" \
-                                                                    name="' + chklist + '" \
-                                                                    value="ckd__\
-                                                                    '+ chklist +'__\
-                                                                    '+ chklist +'__\
-                                                                    wtg__\
-                                                                    delete__\
-                                                                    ' + chklist + '">';
-            document.getElementById("updateDataForm").submit()
-            }                        
+            }
+        document.getElementById("updateDataForm").innerHTML = '<input type="hidden"\
+                                                                id="' + chklist + '" \
+                                                                name="' + chklist + '" \
+                                                                value="ckd__\
+                                                                '+ chklist +'__\
+                                                                '+ chklist +'__\
+                                                                wtg__\
+                                                                delete__\
+                                                                ' + chklist + '">';
+        document.getElementById("updateDataForm").submit()
         }
         udpateData();
     }
