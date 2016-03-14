@@ -91,15 +91,16 @@
                 chklist[i] = chkbox.id;
                 i = i+1;
             }
+        chklist.toString()
         document.getElementById("updateDataForm").innerHTML = '<input type="hidden"\
                                                                 id="deleteList" \
                                                                 name="deleteList" \
                                                                 value="ckd__\
-                                                                [' + chklist.toString + ']__\
-                                                                [' + chklist.toString + ']__\
+                                                                [' + chklist + ']__\
+                                                                [' + chklist + ']__\
                                                                 wtg__\
                                                                 delete__\
-                                                                [' + chklist.toString + ']">';
+                                                                [' + chklist + ']">';
         document.getElementById("updateDataForm").submit()
         }
         udpateData();
