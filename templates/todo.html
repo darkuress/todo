@@ -75,7 +75,6 @@
                                                                       create__\
                                                                       chkbx' + checkBoxNum + '">';
         document.getElementById("updateDataForm").submit()
-        //document.write( JSON.stringify(udpateData()) );
     }
     
     function deleteRow(){
@@ -87,6 +86,16 @@
             var chkbox = row.cells[0].getElementsByTagName('input')[0];
             if('checkbox' == chkbox.type && true == chkbox.checked) {
                 table.deleteRow(count);
+                document.getElementById("updateDataForm").innerHTML = '<input type="hidden"\
+                                                                        id="' + chkbox.id + '" \
+                                                                        name="' + chkbox.id + '" \
+                                                                        value="ckd__\
+                                                                        '+ chkbox.id +'__\
+                                                                        '+ chkbox.id +'__\
+                                                                        wtg__\
+                                                                        delete__\
+                                                                        ' + chkbox.id + '">';
+                document.getElementById("updateDataForm").submit()
             }                        
         }
         udpateData();
