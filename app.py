@@ -32,8 +32,7 @@ def updateData():
     else:
         templateData = {'templateData' : []}
     
-    #- parse data
-    print '.......................', data
+    #- parse data    
     parsed_data = argParser(data)
     print 'parsed_data : ', parsed_data
     #- append or remove data from template data
@@ -42,6 +41,7 @@ def updateData():
         
     elif parsed_data['action'] == 'delete':
         for one_temp_data in templateData['templateData']:
+            print '............', eval(parsed_data['what'])
             if one_temp_data['chkbx'] in eval(parsed_data['what']):
                 templateData['templateData'].remove(one_temp_data)
     
