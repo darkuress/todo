@@ -42,7 +42,7 @@
         </tr>
 	{% for one in templateData %}
         <tr>
-            <td>'<input type="checkbox" id={{one.chkbx}}>{{one.chkbx}}</td>
+            <td>'<input type="checkbox" id={{one.chkbx}}></td>
             <td><select>
                 {% for status in one.all_status %}
                     <option value="{{status.s}}" {{status.tf}}>{{status.s}}</option>
