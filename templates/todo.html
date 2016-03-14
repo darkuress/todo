@@ -88,8 +88,9 @@
             var i = 0
             if('checkbox' == chkbox.type && true == chkbox.checked) {
                 //table.deleteRow(count);
-                chklist[i] = chkbox.id;
-                i = i+1;
+                //chklist[i] = chkbox.id;
+                //i = i+1;
+                chklist[0] = chkbox.id
             }
         chklist.toString()
         document.getElementById("updateDataForm").innerHTML = '<input type="hidden"\
