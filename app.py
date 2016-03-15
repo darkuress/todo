@@ -79,12 +79,12 @@ def argParser(data):
     org_data = data[dataKey]
 
     new_data = {}
-    new_data['chked']  = str(org_data.split('__')[0]).replace(" ","")
-    new_data['who']    = str(org_data.split('__')[1]).replace(" ","")
-    new_data['what']   = str(org_data.split('__')[2]).replace(" ","")
-    new_data['status'] = str(org_data.split('__')[3]).replace(" ","")
-    new_data['action'] = str(org_data.split('__')[4]).replace(" ","")
-    new_data['chkbx']  = str(org_data.split('__')[5]).replace(" ","")
+    #new_data['chked']  = data.get()
+    new_data['who']    = data.get('person')
+    new_data['what']   = data.get('content')
+    new_data['status'] = data.get('status')
+    new_data['action'] = data.get('action')
+    new_data['chkbx']  = data.get('chkbx')
     all_status = ['wtg', 'ip', 'done', 'fix']
     new_data['all_status'] = []
     for status in all_status:
