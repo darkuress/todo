@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import json
 import os
+import pprint
 
 app = Flask(__name__)
 
@@ -45,7 +46,7 @@ def updateData():
             if one_temp_data['chkbx'] in parsed_data['chkbx'].split(','):
                 templateData['templateData'].remove(one_temp_data)
     
-    print '...............', templateData
+    print 'templateData : \n', pprint.pprint(templateData)
     
     writingJson(templateData)
     
