@@ -65,15 +65,7 @@
         var checkBoxNum = document.getElementById("myTable").rows.length;
         var contentTyped = document.getElementById("content").value;
         var personTyped = document.getElementById("person").value;        
-        //document.getElementById("updateDataForm").innerHTML = '<input type="hidden" \
-        //                                                        id="data' + checkBoxNum + '" \
-        //                                                        name="data' + checkBoxNum + '" \
-        //                                                        value="unckd__\
-        //                                                              '+personTyped+'__\
-        //                                                              '+contentTyped+'__\
-        //                                                              wtg__\
-        //                                                              create__\
-        //                                                              chkbx' + checkBoxNum + '">';
+
         document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
                                                                  id="chkbx"\
                                                                  name="chkbx" \
@@ -113,15 +105,35 @@
             }
         }
         chklist.toString();
-        document.getElementById("updateDataForm").innerHTML = '<input type="hidden"\
-                                                                id="deleteList" \
-                                                                name="deleteList" \
-                                                                value="ckd__\
-                                                                [' + chklist + ']__\
-                                                                [' + chklist + ']__\
-                                                                wtg__\
-                                                                delete__\
-                                                                [' + chklist + ']">';
+        //document.getElementById("updateDataForm").innerHTML = '<input type="hidden"\
+        //                                                        id="deleteList" \
+        //                                                        name="deleteList" \
+        //                                                        value="ckd__\
+        //                                                        [' + chklist + ']__\
+        //                                                        [' + chklist + ']__\
+        //                                                        wtg__\
+        //                                                        delete__\
+        //                                                        [' + chklist + ']">';
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="chkbx"\
+                                                                 name="chkbx" \
+                                                                 value=' + chklist + '>'
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="person"\
+                                                                 name="person" \
+                                                                 value="">'
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="content"\
+                                                                 name="content" \
+                                                                 value="">'
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="status"\
+                                                                 name="status" \
+                                                                 value="">'
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="action"\
+                                                                 name="action" \
+                                                                 value="delete">'
         document.getElementById("updateDataForm").submit();
         //udpateData();
     }
