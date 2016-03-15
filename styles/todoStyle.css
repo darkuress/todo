@@ -11,7 +11,9 @@ td,th#myTable{
     padding: 5px;
 }
 */
-tr#myTable :nth-child(even){background-color: #f2f2f2;}
+tr#myTable :nth-child(even){
+    background-color: #f2f2f2;
+}
 
 tr#myTable :hover {background-color: #ddd;}
 
