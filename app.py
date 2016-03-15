@@ -46,7 +46,10 @@ def updateData():
         for one_temp_data in templateData['templateData']:
             if one_temp_data['chkbx'] in parsed_data['chkbx'].split(','):
                 temp_data_del.append(one_temp_data)
-        templateData['templateData'].remove(temp_data_del)
+        
+        print '.....', temp_data_del
+        for x in temp_data_del:
+            templateData['templateData'].remove(x)
     
     print 'templateData : \n', pprint.pprint(templateData)
     
