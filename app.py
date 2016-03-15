@@ -43,6 +43,7 @@ def updateData():
     elif parsed_data['action'] == 'delete':
         for one_temp_data in templateData['templateData']:
             #new_parsed_data_what = [str(x) for x in eval(parsed_data['what'])]
+            print '...................',parsed_data['what'].split(',')
             if one_temp_data['chkbx'] in parsed_data['what'].split(','):
                 templateData['templateData'].remove(one_temp_data)
     
