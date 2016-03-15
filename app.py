@@ -42,9 +42,11 @@ def updateData():
         templateData['templateData'].append(parsed_data)
         
     elif parsed_data['action'] == 'delete':
+        temp_data_del = []
         for one_temp_data in templateData['templateData']:
             if one_temp_data['chkbx'] in parsed_data['chkbx'].split(','):
-                templateData['templateData'].remove(one_temp_data)
+                temp_data_del.append(one_temp_data)
+        templateData['templateData'].remove(temp_data_del)
     
     print 'templateData : \n', pprint.pprint(templateData)
     
