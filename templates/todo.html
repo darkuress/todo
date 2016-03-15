@@ -59,7 +59,7 @@
 	{% for one in templateData %}
         <tr>
             <td><input type="checkbox" id={{one.chkbx}}></td>
-            <td><select>
+            <td><select id={{one.status_id}} onclick="udpateData(this)">
                 {% for status in one.all_status %}
                     <option value="{{status.s}}" {{status.tf}}>{{status.s}}</option>
                 {% endfor %}
@@ -97,7 +97,7 @@
         document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
                                                                  id="status"\
                                                                  name="status" \
-                                                                 value="wtg">'
+                                                                 value="wtg_id'+contentTyped+'">'
         document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
                                                                  id="action"\
                                                                  name="action" \
@@ -120,16 +120,6 @@
                 i = i+1;
             }
         }
-        //chklist.toString();
-        //document.getElementById("updateDataForm").innerHTML = '<input type="hidden"\
-        //                                                        id="deleteList" \
-        //                                                        name="deleteList" \
-        //                                                        value="ckd__\
-        //                                                        [' + chklist + ']__\
-        //                                                        [' + chklist + ']__\
-        //                                                        wtg__\
-        //                                                        delete__\
-        //                                                        [' + chklist + ']">';
         document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
                                                                  id="chkbx"\
                                                                  name="chkbx" \
@@ -151,24 +141,34 @@
                                                                  name="action" \
                                                                  value="delete">'
         document.getElementById("updateDataForm").submit();
-        //udpateData();
     }
     
-    function udpateData(){
-        var table = document.getElementById("myTable");
-        var rowLength = table.rows.length;
-        var data = {'asdfasdf':'asdfasdf'};
-        for (i = 0; i < rowLength; i++){  
-           var oCells = table.rows.item(i).cells
-           var cellLength = oCells.length;
-           
-           var cellData = {};
-           for(var j = 0; j < cellLength; j++){
-              cellData[j] = oCells.item(j).innerHTML;          
-           }
-           data[i] = cellData;
-        }
-        return data ;
+    function udpateData(sel){
+        var selid = sel.id;
+        var value = sel.value;  
+
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="chkbx"\
+                                                                 name="chkbx" \
+                                                                 value="">'
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="person"\
+                                                                 name="person" \
+                                                                 value="">'
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="content"\
+                                                                 name="content" \
+                                                                 value="">'
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="status"\
+                                                                 name="status" \
+                                                                 value="'+value+'_'+sel.id+'">'
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="action"\
+                                                                 name="action" \
+                                                                 value="update">'
+        document.getElementById("updateDataForm").submit();        
+        
     }
         
     </script>

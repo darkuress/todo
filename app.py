@@ -85,7 +85,8 @@ def argParser(data):
     new_data = {}
     new_data['who']    = data.get('person')
     new_data['what']   = data.get('content')
-    new_data['status'] = data.get('status')
+    new_data['status'] = str(data.get('status')).split('_')[0]
+    new_data['status_id'] = str(data.get('status')).split('_')[1]
     new_data['action'] = data.get('action')
     new_data['chkbx']  = data.get('chkbx')
     all_status = ['wtg', 'ip', 'done', 'fix']
