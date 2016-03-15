@@ -54,6 +54,7 @@ def updateData():
         for one_temp_data in templateData['templateData']:
             if one_temp_data['status_id'] == parsed_data['status_id']:
                 one_temp_data['status'] = parsed_data['status']
+                one_temp_data['all_status'] = parsed_data['all_status']
     
     print 'templateData : \n', pprint.pprint(templateData)
     
