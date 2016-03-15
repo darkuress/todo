@@ -42,8 +42,8 @@ def updateData():
         
     elif parsed_data['action'] == 'delete':
         for one_temp_data in templateData['templateData']:
-            new_parsed_data_what = [str(x) for x in eval(parsed_data['what'])]
-            if one_temp_data['chkbx'] in new_parsed_data_what:
+            #new_parsed_data_what = [str(x) for x in eval(parsed_data['what'])]
+            if one_temp_data['chkbx'] in parsed_data['what']:
                 templateData['templateData'].remove(one_temp_data)
     
     writingJson(templateData)
@@ -79,7 +79,6 @@ def argParser(data):
     org_data = data[dataKey]
 
     new_data = {}
-    #new_data['chked']  = data.get()
     new_data['who']    = data.get('person')
     new_data['what']   = data.get('content')
     new_data['status'] = data.get('status')
@@ -87,12 +86,13 @@ def argParser(data):
     new_data['chkbx']  = data.get('chkbx')
     all_status = ['wtg', 'ip', 'done', 'fix']
     new_data['all_status'] = []
+
     for status in all_status:
         if status == new_data['status']:
             new_data['all_status'].append({"s":status, "tf":'selected'})
         else:
             new_data['all_status'].append({"s":status, "tf":''})
-    print 'new_data:', new_data   
+
     return new_data
 
 if __name__ == '__main__':
