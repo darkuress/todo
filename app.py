@@ -36,7 +36,7 @@ def updateData():
     
     #- parse data    
     parsed_data = argParser(data)
-    print 'parsed_data : ', parsed_data
+    
     #- append or remove data from template data
     if parsed_data['action'] == 'create':
         templateData['templateData'].append(parsed_data)
@@ -47,15 +47,12 @@ def updateData():
             if one_temp_data['chkbx'] in parsed_data['chkbx'].split(','):
                 temp_data_del.append(one_temp_data)
         
-        print '.....', temp_data_del
         for x in temp_data_del:
             templateData['templateData'].remove(x)
     
     print 'templateData : \n', pprint.pprint(templateData)
     
     writingJson(templateData)
-    
-    print templateData
     
     return render_template('todo.html', **templateData)
 
