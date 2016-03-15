@@ -41,6 +41,30 @@
             background: url(new_arrow.png) no-repeat right #ddd;
             border: 2px solid #ccc;
         }
+        p{
+                font-family: times, Times New Roman, times-roman, georgia, serif;
+		font-size: 30px;
+	        line-height: 40px;
+	        letter-spacing: 1px;
+		color: #444;
+		margin: 0 0 0 0;
+		padding: 0 0 0 0;
+                font-weight: 100;            
+        }
+        button{
+            display: inline-block;
+            color: #666;
+            background-color: #eee;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 10px;
+            padding: 10px 62px;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border: 1px solid rgba(0,0,0,0.3);
+            border-bottom-width: 3px;            
+        }
     </style>
 </head>
 <body>
@@ -70,9 +94,9 @@
         {% endfor %}
         </thead>
     </table>
-    <br><br><br><br><br>
+    <br><br><br>
 
-    <input id="content" placeholder="What to do"/><input id="person" placeholder="Requested By"/>
+    <input id="content" placeholder="What to do"/><input id="person" placeholder="Requested By"/><br><br>
     <button onclick="createRow()" >Insert</button><button onclick="deleteRow()" type="submit">Delete</button>
     
     <script>
