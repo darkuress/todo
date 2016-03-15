@@ -50,6 +50,11 @@ def updateData():
         for x in temp_data_del:
             templateData['templateData'].remove(x)
     
+    elif parsed_data['action'] == 'update':
+        for one_temp_data in templateData['templateData']:
+            if one_temp_data['status_id'] == parsed_data['status_id']:
+                one_temp_data['status'] = parsed_data['status']
+    
     print 'templateData : \n', pprint.pprint(templateData)
     
     writingJson(templateData)
