@@ -89,10 +89,10 @@ def increaseIndex():
     if os.path.exists("index.txt"):
         file = open("index.txt", "r")
         last_index = int(rile.readline())
-        new_index = last_index+1
+        new_index = str(last_index+1)
         file.close()
     else:
-        new_index = 1
+        new_index = '1'
     file = open("index.txt", "w")
     file.write(new_index)
     
