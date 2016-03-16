@@ -28,6 +28,8 @@ def updateData():
     data = request.form
     old_data = readJson()
     
+    pprint.pprint(data)
+    
     if old_data:
         if old_data.has_key('templateData'):
             templateData = old_data
