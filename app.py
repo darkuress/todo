@@ -81,7 +81,22 @@ def readJson():
         return json_data
     else:
         return None
+
+def increaseIndex():
+    """
+    increase index
+    """
+    if os.path.exists("index.txt"):
+        file = open("index.txt", "r")
+        last_index = int(rile.readline())
+        new_index = last_index+1
+        file.close()
+    else:
+        new_index = 1
+    file = open("index.txt", "w")
+    file.write(new_index)
     
+    return new_index
         
 def argParser(data):
     """
@@ -93,11 +108,11 @@ def argParser(data):
     new_data = {}
     new_data['who']    = data.get('person')
     new_data['what']   = data.get('content')
-    new_data['status'] = str(data.get('status')).split('_')[0]
-    try:
-        new_data['status_id'] = str(data.get('status')).split('_')[1]
-    except:
-        new_data['status_id'] = ""
+    new_data['status'] = str(data.get('status'))
+    if str(data.get('status_id')):
+        new_data['status_id'] = str(data.get('status_id'))
+    else:
+        new_data['status_id'] = 'status_' + increaseIndex()
     new_data['action'] = data.get('action')
     new_data['chkbx']  = data.get('chkbx')
     all_status = ['wtg', 'ip', 'done', 'fix']

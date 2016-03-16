@@ -135,7 +135,11 @@
         document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
                                                                  id="status"\
                                                                  name="status" \
-                                                                 value="wtg_id'+contentTyped+'">'
+                                                                 value="wtg">'
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="status_id"\
+                                                                 name="status" \
+                                                                 value="">'
         document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
                                                                  id="action"\
                                                                  name="action" \
@@ -175,6 +179,10 @@
                                                                  name="status" \
                                                                  value="">'
         document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="status_id"\
+                                                                 name="status" \
+                                                                 value="">'
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
                                                                  id="action"\
                                                                  name="action" \
                                                                  value="delete">'
@@ -200,7 +208,11 @@
         document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
                                                                  id="status"\
                                                                  name="status" \
-                                                                 value="'+value+'_'+sel.id+'">'
+                                                                 value="'+value+'">'
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="status_id"\
+                                                                 name="status" \
+                                                                 value="'+selild+'">'
         document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
                                                                  id="action"\
                                                                  name="action" \
