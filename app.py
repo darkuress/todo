@@ -116,7 +116,10 @@ def argParser(data):
     else:
         new_data['status_id'] = 'status_' + increaseIndex()
     new_data['action'] = data.get('action')
-    new_data['chkbx']  = data.get('chkbx') + '_' + increaseIndex()
+    if new_data['action'] == 'create':
+        new_data['chkbx']  = data.get('chkbx') + '_' + increaseIndex()
+    elif new_data['action'] == 'delete':
+        new_data['chkbx']  = data.get('chkbx')
     all_status = ['wtg', 'ip', 'done', 'fix']
     new_data['all_status'] = []
 
