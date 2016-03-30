@@ -18,6 +18,8 @@ def login():
     """
     first page
     """
+    data = request.form
+    print '.........', data
     templateData = {'templateData' : []}
     init_data = readJson()
     if init_data:
