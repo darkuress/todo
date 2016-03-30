@@ -37,6 +37,7 @@ def login():
     
     else:
         print 'log in failed'
+        return render_template('login.html')
 
 @app.route('/join', methods=['POST'])
 def join():
