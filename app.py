@@ -6,7 +6,7 @@ import db
 
 app = Flask(__name__)
 
-@app.route('/', methods=['POST'])
+@app.route('/')
 def index():
     """
     login page
