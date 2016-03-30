@@ -22,7 +22,7 @@ def login():
     
     #- check if valid
     userId = data['id']
-    userPassWd = data['passwd']
+    userPasswd = data['passwd']
     
     if db.validate(userId, userPasswd):        
         templateData = {'templateData' : []}
