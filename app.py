@@ -31,6 +31,13 @@ def login():
 @app.route('/join', methods=['POST'])
 def join():
     """
+    join page
+    """    
+    return render_template('join.html')
+
+@app.route('/addUser', methods=['POST'])
+def addUser():
+    """
     adding new person to db
     """
     db.addUser(userId, name, passwd, repasswd)
