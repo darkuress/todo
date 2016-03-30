@@ -2,11 +2,19 @@ from flask import Flask, render_template, request
 import json
 import os
 import pprint
+import db
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['POST'])
 def index():
+    """
+    login page
+    """
+    return render_template('login.html')
+    
+@app.route('/login', methods=['POST'])
+def login():
     """
     first page
     """
@@ -19,6 +27,14 @@ def index():
             templateData = {'templateData' : []}
     
     return render_template('todo.html', **templateData)
+
+@app.route('/join', methods=['POST'])
+def join():
+    """
+    adding new person to db
+    """
+    db.addUser(userId, name, passwd, repasswd)
+    return render_template('login.html')
 
 @app.route('/updateData', methods=['POST'])
 def updateData():

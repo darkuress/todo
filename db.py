@@ -1,0 +1,47 @@
+import MySQLdb
+
+db = MySQLdb.connect("localhost","root","83872732","todo_member_management" )
+cursor = db.cursor()
+
+#insert into user value(null,'admin', 'administrator', sha1('password'))
+#select * from user where userid='admin'
+
+def addUser(userId, name, passwd, repasswd):
+    """
+    add user to database
+    """
+    # check if exists
+    if not validateNewId:
+        return False
+    else:
+        try:
+            sql = """insert into user value(
+                     null,'%s', '%s', sha1('%s'))""" %(userId, name, passwd, repasswd)
+            cursor.execute(sql)
+            db.commit()
+            return userId
+        except:
+            db.rollback()
+            return False
+
+def validateNewId(userId):
+    """
+    check if id already exists
+    """
+    sql = """select userid from user"""
+    cursor.execute(sql)
+    result = cursor.fetchall()
+    existingIds = []
+    for oneId in result:
+        existingIds.append(oneId[0])
+    
+    if userId in existingIds:
+        return False
+    else:
+        return True
+
+def validate(userId, passwd):
+    """
+    check if userId and passwd matches
+    """
+    pass

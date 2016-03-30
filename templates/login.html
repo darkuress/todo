@@ -1,0 +1,63 @@
+<head>
+    <style>
+        h1{
+            font-family: times, Times New Roman, times-roman, georgia, serif;
+            font-size: 30px;
+            line-height: 40px;
+            letter-spacing: 1px;
+            color: #444;
+            margin: 0 0 0 0;
+            padding: 0 0 0 0;
+            font-weight: 100;     
+        }
+        p{
+            font-family: times, Times New Roman, times-roman, georgia, serif;
+            font-size: 20px;
+            line-height: 40px;
+            letter-spacing: 1px;
+            color: #444;
+            margin: 0 0 0 0;
+            padding: 0 0 0 0;
+            font-weight: 100;            
+        }
+        button{
+            display: inline-block;
+            color: #666;
+            background-color: #eee;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 10px;
+            padding: 10px 62px;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border: 1px solid rgba(0,0,0,0.3);
+            border-bottom-width: 3px;            
+        }
+        button:hover{
+            display: inline-block;
+            color: #FF6D70;
+            background-color: #D1EBFF;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 10px;
+            padding: 10px 62px;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border: 1px solid rgba(0,0,0,0.3);
+            border-bottom-width: 3px;            
+        }
+    </style>
+</head>
+<body>
+
+<h1>Log In</h1><br>
+<form action="/login" method="post" id="login_data">
+    <p>ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input id="id" name="id" placeholder="ID"/><br>
+    <p>Password&nbsp;
+    <input id="passwd" name="passwd" placeholder="Password"/><br><br>
+    <button type="submit" name="login" value="login">Log In</button>
+    <button type="button" name="join" value="join" onclick="location.href='join.html'">Join</button>
+</body>
