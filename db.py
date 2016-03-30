@@ -44,4 +44,10 @@ def validate(userId, passwd):
     """
     check if userId and passwd matches
     """
-    pass
+    sql = """select * from user where userId='%s' and passwd=sha1(%s)""" %str(userId, passwd)
+    cursor.execute(sql)
+    result = cursor.fetchall()
+    if result:
+        return True
+    else:
+        return False

@@ -19,16 +19,24 @@ def login():
     first page
     """
     data = request.form
-    print '.........', data
-    templateData = {'templateData' : []}
-    init_data = readJson()
-    if init_data:
-        if init_data.has_key('templateData'):
-            templateData = init_data
-        else:
-            templateData = {'templateData' : []}
     
-    return render_template('todo.html', **templateData)
+    #- check if valid
+    userId = data['id']
+    userPassWd = data['passwd']
+    
+    if db.validate(userId, userPasswd):        
+        templateData = {'templateData' : []}
+        init_data = readJson()
+        if init_data:
+            if init_data.has_key('templateData'):
+                templateData = init_data
+            else:
+                templateData = {'templateData' : []}
+        
+        return render_template('todo.html', **templateData)
+    
+    else:
+        print 'log in failed'
 
 @app.route('/join', methods=['POST'])
 def join():
