@@ -51,8 +51,14 @@ def addUser():
     """
     adding new person to db
     """
-    db.addUser(userId, name, passwd, repasswd)
-    return render_template('login.html')
+    addedUser = db.addUser(userId, name, passwd, repasswd)
+    if addedUser:
+        print 'user %s added' %addedUser
+        return render_template('login.html')
+    else:
+        print 'Joining Failed'
+        return render_template('login.html')
+    
 
 @app.route('/updateData', methods=['POST'])
 def updateData():

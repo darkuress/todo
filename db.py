@@ -49,8 +49,6 @@ def validate(userId, passwd):
     result = cursor.fetchall()
 
     if result:
-        print result
         return True
     else:
-        print 'fail'
         return False
