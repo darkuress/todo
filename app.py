@@ -51,7 +51,15 @@ def addUser():
     """
     adding new person to db
     """
+    data = request.form
+    
+    name = data['name']
+    userId = data['id']
+    passwd = data['passwd']
+    repasswd = data['repasswd']
+    
     addedUser = db.addUser(userId, name, passwd, repasswd)
+    
     if addedUser:
         print 'user %s added' %addedUser
         return render_template('login.html')
