@@ -35,7 +35,7 @@ def login():
             else:
                 templateData = {'templateData' : []}
         
-        templatedata['userId'] = userId
+        templateData['userId'] = userId
         
         return render_template('todo.html', **templateData)
     
