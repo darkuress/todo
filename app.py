@@ -131,7 +131,7 @@ def writingJson(userId, data):
     """
     dataFullFile = os.path.join(dataBase, userId + '_' + dataFile)
     with open(dataFullFile, 'w') as outfile:
-        json.dump(dataFullFile, outfile)
+        json.dump(data, outfile)
 
 def readJson(userId):
     """
