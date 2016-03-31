@@ -16,7 +16,7 @@ def addUser(userId, name, passwd, repasswd):
     else:
         try:
             sql = """insert into user value(
-                     null,'%s', '%s', sha1('%s'))""" %(userId, name, passwd, repasswd)
+                     null,'%s', '%s', sha1('%s'))""" %(userId, name, passwd)
             cursor.execute(sql)
             db.commit()
             return userId

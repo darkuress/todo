@@ -59,13 +59,17 @@ def addUser():
     passwd   = str(data['passwd'])
     repasswd = str(data['repasswd'])
     
-    addedUser = db.addUser(userId, name, passwd, repasswd)
-    
+    if passwd == repasswd:
+        addedUser = db.addUser(userId, name, passwd, repasswd)
+    else:
+        print 'Joining Failed - unmatchingi Password'
+        return render_template('login.html')
+        
     if addedUser:
         print 'user %s added' %addedUser
         return render_template('login.html')
     else:
-        print 'Joining Failed'
+        print 'Joining Failed - DB'
         return render_template('login.html')
     
 
