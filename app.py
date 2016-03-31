@@ -137,7 +137,7 @@ def readJson(userId):
     """
     read json file
     """
-    dataFullFile = userId + '_' + dataFile
+    dataFullFile = os.path.join(dataBase, userId + '_' + dataFile)
     if os.path.exists(dataFullFile):       
         with open(dataFullFile, 'r') as outfile:
             json_data = json.load(outfile)
