@@ -151,7 +151,7 @@ def increaseIndex(userId):
     """
     indexFullFile = os.path.join(dataBase, userId + '_' + indexFile)
     if os.path.exists(indexFullFile):
-        file = open(indexFile, "r")
+        file = open(indexFullFile, "r")
         last_index = int(file.readline())
         new_index = str(last_index+1)
         file.close()
