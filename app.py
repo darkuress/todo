@@ -5,8 +5,9 @@ import pprint
 import db
 
 app = Flask(__name__)
-dataFile = 'data/data.txt'
-indexFile = 'data/index.txt'
+dataBase = 'data'
+dataFile = 'data.txt'
+indexFile = 'index.txt'
 
 @app.route('/')
 def index():
@@ -128,7 +129,7 @@ def writingJson(userId, data):
     """
     writing JsonFile
     """
-    dataFullFile = userId + '_' + dataFile
+    dataFullFile = os.path.join(dataBase, userId + '_' + dataFile)
     with open(dataFullFile, 'w') as outfile:
         json.dump(dataFullFile, outfile)
 
@@ -148,7 +149,7 @@ def increaseIndex(userId):
     """
     increase index
     """
-    indexFullFile = userId + '_' + indexFile
+    indexFullFile = os.path.join(dataBase, userId + '_' + indexFile)
     if os.path.exists(indexFullFile):
         file = open(indexFile, "r")
         last_index = int(file.readline())
