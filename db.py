@@ -47,8 +47,10 @@ def validate(userId, passwd):
     sql = """select * from user where userId='%s' and passwd=sha1('%s')""" %(str(userId), str(passwd))
     cursor.execute(sql)
     result = cursor.fetchall()
-    print result
+
     if result:
+        print result
         return True
     else:
+        print 'fail'
         return False
