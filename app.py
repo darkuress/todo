@@ -57,7 +57,7 @@ def addUser():
     userId   = str(data['id'])
     name     = str(data['name'])    
     passwd   = str(data['passwd'])
-    repasswd = str(ata['repasswd'])
+    repasswd = str(data['repasswd'])
     
     addedUser = db.addUser(userId, name, passwd, repasswd)
     
