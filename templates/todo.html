@@ -112,7 +112,7 @@
 
     <input id="content" placeholder="What to do"/><input id="person" placeholder="Requested By"/><br><br>
     <button onclick="createRow()" >Insert</button><button onclick="deleteRow()" type="submit">Delete</button>
-    
+    <input type="hidden" id="userId" name="userId" value={{userId}}>
     <script>
     function createRow() {
         var table = document.getElementById("myTable");

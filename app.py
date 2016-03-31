@@ -5,6 +5,8 @@ import pprint
 import db
 
 app = Flask(__name__)
+dataFile = 'data/data.txt'
+indexFile = 'data/index.txt'
 
 @app.route('/')
 def index():
@@ -26,12 +28,14 @@ def login():
     
     if db.validate(userId, userPasswd):        
         templateData = {'templateData' : []}
-        init_data = readJson()
+        init_data = readJson(userId)
         if init_data:
             if init_data.has_key('templateData'):
                 templateData = init_data
             else:
                 templateData = {'templateData' : []}
+        
+        templatedata['userId'] = userId
         
         return render_template('todo.html', **templateData)
     
@@ -79,7 +83,8 @@ def updateData():
     update request
     """
     data = request.form
-    old_data = readJson()
+    userId = data['userId']
+    old_data = readJson(userId)
     
     pprint.pprint(data)
     
@@ -90,7 +95,7 @@ def updateData():
         templateData = {'templateData' : []}
     
     #- parse data    
-    parsed_data = argParser(data)
+    parsed_data = argParser(userId, data)
     
     #- append or remove data from template data
     if parsed_data['action'] == 'create':
@@ -115,45 +120,48 @@ def updateData():
     
     print 'templateData : \n', pprint.pprint(templateData)
     
-    writingJson(templateData)
+    writingJson(userId, templateData)
     
     return render_template('todo.html', **templateData)
 
-def writingJson(data):
+def writingJson(userId, data):
     """
     writing JsonFile
     """
-    with open('data.txt', 'w') as outfile:
-        json.dump(data, outfile)
+    dataFullFile = userId + '_' + dataFile
+    with open(dataFullFile, 'w') as outfile:
+        json.dump(dataFullFile, outfile)
 
-def readJson():
+def readJson(userId):
     """
     read json file
     """
-    if os.path.exists('data.txt'):       
-        with open('data.txt', 'r') as outfile:
+    dataFullFile = userId + '_' + dataFile
+    if os.path.exists(dataFullFile):       
+        with open(dataFullFile, 'r') as outfile:
             json_data = json.load(outfile)
         return json_data
     else:
         return None
 
-def increaseIndex():
+def increaseIndex(userId):
     """
     increase index
     """
-    if os.path.exists("index.txt"):
-        file = open("index.txt", "r")
+    indexFullFile = userId + '_' + indexFile
+    if os.path.exists(indexFullFile):
+        file = open(indexFile, "r")
         last_index = int(file.readline())
         new_index = str(last_index+1)
         file.close()
     else:
         new_index = '1'
-    file = open("index.txt", "w")
+    file = open(indexFullFile, "w")
     file.write(new_index)
     
     return new_index
         
-def argParser(data):
+def argParser(userId, data):
     """
     parse requested data
     """
@@ -167,10 +175,10 @@ def argParser(data):
     if str(data.get('status_id')):
         new_data['status_id'] = str(data.get('status_id'))
     else:
-        new_data['status_id'] = 'status_' + increaseIndex()
+        new_data['status_id'] = 'status_' + increaseIndex(userId)
     new_data['action'] = data.get('action')
     if new_data['action'] == 'create':
-        new_data['chkbx']  = data.get('chkbx') + '_' + increaseIndex()
+        new_data['chkbx']  = data.get('chkbx') + '_' + increaseIndex(userId)
     elif new_data['action'] == 'delete':
         new_data['chkbx']  = data.get('chkbx')
     all_status = ['wtg', 'ip', 'done', 'fix']
