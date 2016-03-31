@@ -54,10 +54,10 @@ def addUser():
     data = request.form
     print data
     
-    name = data['name']
-    userId = data['id']
-    passwd = data['passwd']
-    repasswd = data['repasswd']
+    userId   = str(data['id'])
+    name     = str(data['name'])    
+    passwd   = str(data['passwd'])
+    repasswd = str(ata['repasswd'])
     
     addedUser = db.addUser(userId, name, passwd, repasswd)
     
