@@ -84,7 +84,7 @@ def updateData():
     update request
     """
     data = request.form
-    userId = data['userId']
+    userId = str(data['userId'])
     old_data = readJson(userId)
     
     pprint.pprint(data)
