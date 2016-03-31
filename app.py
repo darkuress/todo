@@ -52,6 +52,7 @@ def addUser():
     adding new person to db
     """
     data = request.form
+    print data
     
     name = data['name']
     userId = data['id']
