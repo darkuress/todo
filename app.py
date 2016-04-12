@@ -9,6 +9,8 @@ dataBase = 'data'
 dataFile = 'data.txt'
 indexFile = 'index.txt'
 
+todoDB = db.DB()
+
 @app.route('/')
 def index():
     """
@@ -27,7 +29,7 @@ def login():
     userId = data['id']
     userPasswd = data['passwd']
     
-    if db.validate(userId, userPasswd):        
+    if todoDB.validate(userId, userPasswd):        
         templateData = {'templateData' : []}
         init_data = readJson(userId)
         if init_data:
@@ -65,7 +67,7 @@ def addUser():
     repasswd = str(data['repasswd'])
     
     if passwd == repasswd:
-        addedUser = db.addUser(userId, name, passwd, repasswd)
+        addedUser = todoDB.addUser(userId, name, passwd, repasswd)
     else:
         print 'Joining Failed - unmatchingi Password'
         return render_template('login.html')
