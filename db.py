@@ -5,7 +5,25 @@ cursor = db.cursor()
 
 #insert into user value(null,'admin', 'administrator', sha1('password'))
 #select * from user where userid='admin'
-
+class DB(object):
+    def __init__(self):
+        db = MySQLdb.connect("localhost","root","83872732","todo_member_management" )
+        self.cursor = db.cursor()
+    
+    @property
+    def allUser():
+        """
+        querry all member
+        """
+        sql = """select userid from user"""
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        existingIds = []
+        for oneId in result:
+            existingIds.append(oneId[0])
+        
+        return existingIds
+        
 def addUser(userId, name, passwd, repasswd):
     """
     add user to database
