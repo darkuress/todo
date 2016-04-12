@@ -11,12 +11,12 @@ class DB(object):
         self.cursor = db.cursor()
     
     @property
-    def allUser():
+    def allUser(self):
         """
         querry all member
         """
         sql = """select userid from user"""
-        cursor.execute(sql)
+        self.cursor.execute(sql)
         result = cursor.fetchall()
         existingIds = []
         for oneId in result:
