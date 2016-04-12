@@ -17,7 +17,7 @@ class DB(object):
         """
         sql = """select userid from user"""
         self.cursor.execute(sql)
-        result = cursor.fetchall()
+        result = self.cursor.fetchall()
         existingIds = []
         for oneId in result:
             existingIds.append(oneId[0])
