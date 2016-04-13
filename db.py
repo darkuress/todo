@@ -40,7 +40,17 @@ class DB(object):
             except:
                 self.db.rollback()
                 return False
-
+    
+    def removeUser(self, userId):
+        """
+        delete user and user todo table from the database
+        """
+        sql = """delete from user where userid=%s""" %userId
+        self.cursor.execute(sql)
+        
+        #- need to add delete table part here
+        
+    
     def validateNewId(self, userId):
         """
         check if id already exists
@@ -75,12 +85,11 @@ class DB(object):
         Create content table
         """
         try:
-            sql = """CREATE TABLE todo_list_%s (
+            sql = """create table todo_list_%s (
                      tid int not null primary key auto_increment,
-                     check CHAR(5) NOT NULL,
-                     status CHAR(10) NOT NULL,
-                     content CHAR(80) NOT NULL,
-                     requested by CHAR(20) NOT NULL )""" %user
+                     status char(10) not null,
+                     content char(80) not null,
+                     requestedby char(20) not null)""" %user
                      
             self.cursor.execute(sql)
             return "%s_todo_list" %user
