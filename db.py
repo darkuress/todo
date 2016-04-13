@@ -32,6 +32,10 @@ class DB(object):
                          null,'%s', '%s', sha1('%s'))""" %(userId, name, passwd)
                 self.cursor.execute(sql)
                 self.db.commit()
+                
+                #- creating table for user
+                self.addTable(userId)
+                
                 return userId
             except:
                 self.db.rollback()
@@ -65,3 +69,26 @@ class DB(object):
             return True
         else:
             return False
+    
+    def addTable(self, user):
+        """
+        Create content table
+        """
+        try:
+            sql = """CREATE TABLE todo_list_%s (
+                     tid int not null primary key auto_increment,
+                     check CHAR(5) NOT NULL,
+                     status CHAR(10) NOT NULL,
+                     content CHAR(80) NOT NULL,
+                     requested by CHAR(20) NOT NULL )""" %user
+                     
+            self.cursor.execute(sql)
+            return "%s_todo_list" %user
+        except:
+            print "Falied creating new table for user %s" %user
+            return False
+        
+    def fillTable(self):
+        pass
+                     
+                 
