@@ -125,3 +125,5 @@ class DB(object):
         sql = """select * from todo_list_%s where tid=%s""" %(userId, tid)
         self.cursor.execute(sql)
         result = self.cursor.fetchall()
+        
+        return result
