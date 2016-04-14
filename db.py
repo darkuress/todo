@@ -117,4 +117,11 @@ class DB(object):
         except:
             self.db.rollback()
             return False                     
-             
+    
+    def readTable(self, userId, tid):
+        """
+        read table
+        """
+        sql = """select * from todo_list_%s where tid=%s""" %(userId, tid)
+        self.cursor.execute(sql)
+        result = self.cursor.fetchall()
