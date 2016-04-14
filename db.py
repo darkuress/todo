@@ -107,7 +107,7 @@ class DB(object):
         status_id = data['status_id']
         content   = data['what']
         reqby     = data['who']
-        sql = """insert into user todo_list_%s value(
+        sql = """insert into todo_list_%s value(
                  null,'%s', '%s', '%s', '%s')""" %(userId, status, status_id, content, reqby)
         self.cursor.execute(sql)
                      
