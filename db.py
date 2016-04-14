@@ -126,4 +126,11 @@ class DB(object):
         self.cursor.execute(sql)
         result = self.cursor.fetchall()
         
-        return result
+        data = {}
+        data['chkbx']     = int(result[0])
+        data['status']    = result[1]
+        data['status_id'] = result[2]
+        data['what']      = result[3]
+        data['who']       = result[4]
+        
+        return data
