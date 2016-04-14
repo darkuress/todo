@@ -118,9 +118,9 @@ class DB(object):
             self.db.rollback()
             return False                     
     
-    def readTable(self, userId, tid):
+    def readLine(self, userId, tid):
         """
-        read table
+        read one line of the table where tid
         """
         sql = """select * from todo_list_%s where tid=%s""" %(userId, tid)
         self.cursor.execute(sql)
@@ -134,3 +134,23 @@ class DB(object):
         data['who']       = result[0][4]
         
         return data
+    
+    def readTable(self, userId, tid):
+        """
+        read all info of table
+        """
+        sql = """select * from todo_list_%s""" %(userId)
+        self.cursor.execute(sql)
+        result = self.cursor.fetchall()
+        
+        all_data = []
+        for line in result:
+            data = {}
+            data['chkbx']     = int(line[0])
+            data['status']    = line[1]
+            data['status_id'] = line[2]
+            data['what']      = line[3]
+            data['who']       = line[4]
+            all_data.append(data)
+            
+        return all_data
