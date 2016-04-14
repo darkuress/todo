@@ -127,10 +127,10 @@ class DB(object):
         result = self.cursor.fetchall()
         
         data = {}
-        data['chkbx']     = int(result[0])
-        data['status']    = result[1]
-        data['status_id'] = result[2]
-        data['what']      = result[3]
-        data['who']       = result[4]
+        data['chkbx']     = int(result[0][0])
+        data['status']    = result[0][1]
+        data['status_id'] = result[0][2]
+        data['what']      = result[0][3]
+        data['who']       = result[0][4]
         
         return data
