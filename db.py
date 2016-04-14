@@ -119,7 +119,7 @@ class DB(object):
             return False                     
         
         #- fill status_id with name_tid
-        sql = """select * from todo_list_%s order by id desc limit 1""" %userId
+        sql = """select * from todo_list_%s order by tid desc limit 1""" %userId
         self.cursor.execute(sql)
         line = self.cursor.fetchall()
         index = str(line[0][0])
