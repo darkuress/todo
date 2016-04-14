@@ -87,6 +87,7 @@ class DB(object):
         try:
             sql = """create table todo_list_%s (
                      tid int not null primary key auto_increment,
+                     chkbx char(10),
                      status char(10) not null,
                      status_id char(10),
                      content char(80) not null,
@@ -110,7 +111,7 @@ class DB(object):
         
         try:
             sql = """insert into todo_list_%s value(
-                     null,'%s', null, '%s', '%s')""" %(userId, status, content, reqby)
+                     null, null, '%s', null, '%s', '%s')""" %(userId, status, content, reqby)
             self.cursor.execute(sql)
             self.db.commit()
             
@@ -122,13 +123,11 @@ class DB(object):
         sql = """select * from todo_list_%s order by tid desc limit 1""" %userId
         self.cursor.execute(sql)
         line = self.cursor.fetchall()
-        indexL = line[0][0]
         index = str(int(line[0][0]))
-        print '...........', line
         status_id = 'status_' + index
         
         try:
-            sql = """update todo_list_%s set status_id='status_%s' where tid=%s""" %(userId, index, int(indexL))
+            sql = """update todo_list_%s set chkbx='chkbx_%s' status_id='status_%s' where tid=%s""" %(userId, index, index, int(index))
             self.cursor.execute(sql)
             self.db.commit()
         except:
