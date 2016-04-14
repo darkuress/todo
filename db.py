@@ -45,11 +45,11 @@ class DB(object):
         """
         delete user and user todo table from the database
         """
-        sql = """delete from user where userid=%s""" %userId
+        sql = """delete from user where userid=%s;
+                 drop table todo_list_%s;"""  %(userId, userId)
         self.cursor.execute(sql)
         
-        #- need to add delete table part here
-        
+        return "deleted user : %s" %userId
     
     def validateNewId(self, userId):
         """
@@ -80,7 +80,7 @@ class DB(object):
         else:
             return False
     
-    def addTable(self, user):
+    def addTable(self, userId):
         """
         Create content table
         """
@@ -88,16 +88,27 @@ class DB(object):
             sql = """create table todo_list_%s (
                      tid int not null primary key auto_increment,
                      status char(10) not null,
+                     status_id char(10) not null,
                      content char(80) not null,
-                     requestedby char(20) not null)""" %user
+                     requestedby char(20) not null)""" %userId
                      
             self.cursor.execute(sql)
-            return "%s_todo_list" %user
+            return "todo_list_%s" %userId
         except:
-            print "Falied creating new table for user %s" %user
+            print "Falied creating new table for user %s" %userId
             return False
         
-    def fillTable(self):
-        pass
+    def fillTable(self, userId, data):
+        """
+        fill content 
+        """
+        tid = data['chkbx']
+        status = data['status']
+        status_id = data['status_id']
+        content = data['what']
+        reqby = data['who']
+        sql = """insert into user todo_list_%s(
+                 null,'%s', '%s', '%s', '%s')""" %(userId, tid, status, status_id, content, reqby)
+        
                      
                  

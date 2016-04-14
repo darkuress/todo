@@ -136,6 +136,12 @@ def writingJson(userId, data):
     with open(dataFullFile, 'w') as outfile:
         json.dump(data, outfile)
 
+def writingTableDB(userId, data):
+    """
+    writing table database
+    """
+    todoDB.fillTable(userId, data)
+
 def readJson(userId):
     """
     read json file
