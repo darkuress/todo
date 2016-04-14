@@ -161,11 +161,11 @@ class DB(object):
         all_data = []
         for line in result:
             data = {}
-            data['chkbx']     = int(line[0])
-            data['status']    = line[1]
-            data['status_id'] = line[2]
-            data['what']      = line[3]
-            data['who']       = line[4]
+            data['chkbx']     = line[1]
+            data['status']    = line[2]
+            data['status_id'] = line[3]
+            data['what']      = line[4]
+            data['who']       = line[5]
             all_data.append(data)
             
         return all_data
