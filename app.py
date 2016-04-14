@@ -117,7 +117,10 @@ def updateData():
             if one_temp_data['status_id'] == parsed_data['status_id']:
                 one_temp_data['status'] = parsed_data['status']
                 one_temp_data['all_status'] = parsed_data['all_status']
-    
+                
+                todoDB.updateStatus(userId, one_temp_data['status'], parsed_data['status_id'])
+        templateData = readTable(userId)
+        
     print 'templateData : \n', pprint.pprint(templateData)
 
     templateData['userId'] = userId
@@ -136,6 +139,8 @@ def readTable(userId):
     """
     db_table_data = todoDB.readTable(userId)
     data = {'templateData' : db_table_data}
+    
+    print 'Database : \n', pprint.pprint(data)
     
     return data
         

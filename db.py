@@ -132,6 +132,17 @@ class DB(object):
             self.db.commit()
         except:
             self.db.rollback()
+
+    def updateStatus(self, userId, new_status, status_id):
+        """
+        update status
+        """
+        try:
+            sql = """update todo_list_%s set status='%s' where status_id='%s'""" %(userId, new_status, status_id)
+            self.cursor.execute(sql)
+            self.db.commit()
+        except:
+            self.db.rollback()
         
     def readLine(self, userId, tid):
         """
