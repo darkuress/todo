@@ -127,7 +127,7 @@ class DB(object):
         status_id = 'status_' + index
         
         try:
-            sql = """update todo_list_%s set chkbx='chkbx_%s' status_id='status_%s' where tid=%s""" %(userId, index, index, int(index))
+            sql = """update todo_list_%s set chkbx='chkbx_%s', status_id='status_%s' where tid=%s""" %(userId, index, index, int(index))
             self.cursor.execute(sql)
             self.db.commit()
         except:
