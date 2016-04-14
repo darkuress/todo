@@ -103,6 +103,7 @@ def updateData():
     #- append or remove data from template data
     if parsed_data['action'] == 'create':
         templateData['templateData'].append(parsed_data)
+        writingTableDB(userId, parsed_data)
         
     elif parsed_data['action'] == 'delete':
         temp_data_del = []
@@ -124,7 +125,7 @@ def updateData():
     print 'templateData : \n', pprint.pprint(templateData)
     
     writingJson(userId, templateData)
-    #writingTableDB(userId, data)
+
     templateData['userId'] = userId
     
     return render_template('todo.html', **templateData)

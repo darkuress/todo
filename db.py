@@ -102,11 +102,11 @@ class DB(object):
         """
         fill content 
         """
-        tid = data['chkbx']
-        status = data['status']
+        tid       = data['chkbx']
+        status    = data['status']
         status_id = data['status_id']
-        content = data['what']
-        reqby = data['who']
+        content   = data['what']
+        reqby     = data['who']
         sql = """insert into user todo_list_%s(
                  null,'%s', '%s', '%s', '%s')""" %(userId, tid, status, status_id, content, reqby)
         
