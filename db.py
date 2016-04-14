@@ -123,6 +123,7 @@ class DB(object):
         self.cursor.execute(sql)
         line = self.cursor.fetchall()
         index = str(line[0][0])
+        print '...........', line
         status_id = 'status_' + index
         
         try:
