@@ -88,7 +88,7 @@ class DB(object):
             sql = """create table todo_list_%s (
                      tid int not null primary key auto_increment,
                      status char(10) not null,
-                     status_id int not null primary key auto_increment,
+                     status_id char(10),
                      content char(80) not null,
                      requestedby char(20) not null)""" %userId
                      
@@ -117,7 +117,21 @@ class DB(object):
         except:
             self.db.rollback()
             return False                     
-    
+        
+        #- fill status_id with name_tid
+        sql = """select * from todo_list_%s order by id desc limit 1""" %s
+        self.cursor.execute(sql)
+        line = self.cursor.fetchall()
+        index = str(line[0][0])
+        status_id = 'status_' + index
+        
+        try:
+            sql = """update todo_list_%s set status_id='status_%s' where tid=%s""" %(userId, index, int(index))
+            self.cursor.execute(sql)
+            self.db.commit()
+        except:
+            self.db.rollback()
+        
     def readLine(self, userId, tid):
         """
         read one line of the table where tid
