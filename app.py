@@ -27,7 +27,7 @@ def login():
     
     if todoDB.validate(userId, userPasswd):        
         templateData = {'templateData' : []}
-        init_data = readJson(userId)
+        init_data = readTable(userId)
         if init_data:
             if init_data.has_key('templateData'):
                 templateData = init_data
