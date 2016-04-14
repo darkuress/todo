@@ -124,6 +124,7 @@ def updateData():
     print 'templateData : \n', pprint.pprint(templateData)
     
     writingJson(userId, templateData)
+    todoDB.fillTable(userId, data)
     templateData['userId'] = userId
     
     return render_template('todo.html', **templateData)
