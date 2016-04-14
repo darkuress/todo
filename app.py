@@ -5,10 +5,6 @@ import pprint
 import db
 
 app = Flask(__name__)
-dataBase = 'data'
-dataFile = 'data.txt'
-indexFile = 'index.txt'
-
 todoDB = db.DB()
 
 @app.route('/')
@@ -87,7 +83,7 @@ def updateData():
     """
     data = request.form
     userId = str(data['userId'])
-    old_data = readJson(userId)
+    old_data = readTable(userId)
     
     pprint.pprint(data)
     
@@ -123,20 +119,10 @@ def updateData():
                 one_temp_data['all_status'] = parsed_data['all_status']
     
     print 'templateData : \n', pprint.pprint(templateData)
-    
-    writingJson(userId, templateData)
 
     templateData['userId'] = userId
     
     return render_template('todo.html', **templateData)
-
-def writingJson(userId, data):
-    """
-    writing JsonFile
-    """
-    dataFullFile = os.path.join(dataBase, userId + '_' + dataFile)
-    with open(dataFullFile, 'w') as outfile:
-        json.dump(data, outfile)
 
 def writingTableDB(userId, data):
     """
@@ -144,34 +130,14 @@ def writingTableDB(userId, data):
     """
     todoDB.fillTable(userId, data)
 
-def readJson(userId):
+def readTable(userId):
     """
-    read json file
+    read existing values in table in db
     """
-    dataFullFile = os.path.join(dataBase, userId + '_' + dataFile)
-    if os.path.exists(dataFullFile):       
-        with open(dataFullFile, 'r') as outfile:
-            json_data = json.load(outfile)
-        return json_data
-    else:
-        return None
-
-def increaseIndex(userId):
-    """
-    increase index
-    """
-    indexFullFile = os.path.join(dataBase, userId + '_' + indexFile)
-    if os.path.exists(indexFullFile):
-        file = open(indexFullFile, "r")
-        last_index = int(file.readline())
-        new_index = str(last_index+1)
-        file.close()
-    else:
-        new_index = '1'
-    file = open(indexFullFile, "w")
-    file.write(new_index)
+    db_table_data = todoDB.readTable(userId)
+    data = {'templateData' : db_table_data}
     
-    return new_index
+    return data
         
 def argParser(userId, data):
     """
@@ -181,18 +147,13 @@ def argParser(userId, data):
     org_data = data[dataKey]
 
     new_data = {}
-    new_data['who']    = data.get('person')
-    new_data['what']   = data.get('content')
-    new_data['status'] = str(data.get('status'))
-    if str(data.get('status_id')):
-        new_data['status_id'] = str(data.get('status_id'))
-    else:
-        new_data['status_id'] = 'status_' + increaseIndex(userId)
-    new_data['action'] = data.get('action')
-    if new_data['action'] == 'create':
-        new_data['chkbx']  = data.get('chkbx') + '_' + increaseIndex(userId)
-    elif new_data['action'] == 'delete':
-        new_data['chkbx']  = data.get('chkbx')
+    new_data['who']       = data.get('person')
+    new_data['what']      = data.get('content')
+    new_data['chkbx']     = data.get('chkbx')
+    new_data['status']    = str(data.get('status'))
+    new_data['status_id'] = str(data.get('status_id'))
+    new_data['action']    = data.get('action')
+    
     all_status = ['wtg', 'ip', 'done', 'fix']
     new_data['all_status'] = []
 

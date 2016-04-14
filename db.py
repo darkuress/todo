@@ -88,7 +88,7 @@ class DB(object):
             sql = """create table todo_list_%s (
                      tid int not null primary key auto_increment,
                      status char(10) not null,
-                     status_id char(10) not null,
+                     status_id int not null primary key auto_increment,
                      content char(80) not null,
                      requestedby char(20) not null)""" %userId
                      
@@ -110,7 +110,7 @@ class DB(object):
         
         try:
             sql = """insert into todo_list_%s value(
-                     null,'%s', '%s', '%s', '%s')""" %(userId, status, status_id, content, reqby)
+                     null,'%s', null, '%s', '%s')""" %(userId, status, content, reqby)
             self.cursor.execute(sql)
             self.db.commit()
             
