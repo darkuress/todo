@@ -135,7 +135,7 @@ class DB(object):
         
         return data
     
-    def readTable(self, userId, tid):
+    def readTable(self, userId):
         """
         read all info of table
         """
