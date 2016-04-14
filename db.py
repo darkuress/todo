@@ -107,8 +107,14 @@ class DB(object):
         status_id = data['status_id']
         content   = data['what']
         reqby     = data['who']
-        sql = """insert into todo_list_%s value(
-                 null,'%s', '%s', '%s', '%s')""" %(userId, status, status_id, content, reqby)
-        self.cursor.execute(sql)
-                     
-                 
+        
+        try:
+            sql = """insert into todo_list_%s value(
+                     null,'%s', '%s', '%s', '%s')""" %(userId, status, status_id, content, reqby)
+            self.cursor.execute(sql)
+            self.db.commit()
+            
+        except:
+            self.db.rollback()
+            return False                     
+             
