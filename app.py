@@ -151,11 +151,11 @@ def statusSelector(status):
     all_status = ['wtg', 'ip', 'done', 'fix']
     result = []
 
-    for status in all_status:
-        if status == new_data['status']:
-            result.append({"s":status, "tf":'selected'})
+    for one_status in all_status:
+        if one_status == status:
+            result.append({"s":one_status, "tf":'selected'})
         else:
-            result.append({"s":status, "tf":''})    
+            result.append({"s":one_status, "tf":''})    
     
     return result
     
