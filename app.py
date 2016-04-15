@@ -111,6 +111,7 @@ def updateData():
                 temp_data_del.append(one_temp_data)
         
         for x in temp_data_del:
+            todoDB.removeLine(userId, x['chkbx'])
             templateData['templateData'].remove(x)
     
     elif parsed_data['action'] == 'update':

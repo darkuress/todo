@@ -180,3 +180,15 @@ class DB(object):
             all_data.append(data)
             
         return all_data
+
+    def removeLine(self, userId, chkbx):
+        """
+        delete row from the table
+        """
+        sql = """delete from todo_list_%s where chkbx='%s'""" %(userId, chkbx)
+        try:
+           self.cursor.execute(sql)
+           self.db.commit()
+        except:
+           self.db.rollback()        
+        
