@@ -138,6 +138,10 @@ def readTable(userId):
     read existing values in table in db
     """
     db_table_data = todoDB.readTable(userId)
+    
+    for one_data in db_table_data:
+        one_data['all_status'] = statusSelector(one_data['status'])
+    
     data = {'templateData' : db_table_data}
     
     print 'Database : \n', pprint.pprint(data)
