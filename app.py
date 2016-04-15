@@ -87,6 +87,7 @@ def updateData():
     
     pprint.pprint(data)
     
+    #- initialize templateData
     if old_data:
         if old_data.has_key('templateData'):
             templateData = old_data
@@ -98,8 +99,10 @@ def updateData():
     
     #- append or remove data from template data
     if parsed_data['action'] == 'create':
-        writingTableDB(userId, parsed_data)
+        index = writingTableDB(userId, parsed_data)
         parsed_data['all_status'] = statusSelector(parsed_data['status'])
+        parsed_data['chkbx_id']   = 'chkbx_' + index
+        parsed_data['status_id']  = 'status_' + index
         templateData['templateData'].append(parsed_data)
         
     elif parsed_data['action'] == 'delete':
@@ -130,7 +133,7 @@ def writingTableDB(userId, data):
     """
     writing table database
     """
-    todoDB.fillTable(userId, data)
+    return todoDB.fillTable(userId, data)
 
 def readTable(userId):
     """

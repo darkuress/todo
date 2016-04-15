@@ -132,6 +132,8 @@ class DB(object):
             self.db.commit()
         except:
             self.db.rollback()
+        
+        return index
 
     def updateStatus(self, userId, new_status, status_id):
         """
