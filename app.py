@@ -98,8 +98,9 @@ def updateData():
     
     #- append or remove data from template data
     if parsed_data['action'] == 'create':
-        templateData['templateData'].append(parsed_data)
         writingTableDB(userId, parsed_data)
+        parsed_data['all_status'] = statusSelector(parsed_data['status'])
+        templateData['templateData'].append(parsed_data)
         
     elif parsed_data['action'] == 'delete':
         temp_data_del = []
@@ -116,10 +117,9 @@ def updateData():
         for one_temp_data in templateData['templateData']:
             if one_temp_data['status_id'] == parsed_data['status_id']:
                 one_temp_data['status'] = parsed_data['status']
-                one_temp_data['all_status'] = parsed_data['all_status']
+                one_temp_data['all_status'] = statusSelector(parsed_data['status'])
                 
                 todoDB.updateStatus(userId, one_temp_data['status'], parsed_data['status_id'])
-        templateData = readTable(userId)
         
     print 'templateData : \n', pprint.pprint(templateData)
 
@@ -143,7 +143,22 @@ def readTable(userId):
     print 'Database : \n', pprint.pprint(data)
     
     return data
-        
+
+def statusSelector(status):
+    """
+    this will be added to template data
+    """
+    all_status = ['wtg', 'ip', 'done', 'fix']
+    result = []
+
+    for status in all_status:
+        if status == new_data['status']:
+            result.append({"s":status, "tf":'selected'})
+        else:
+            result.append({"s":status, "tf":''})    
+    
+    return result
+    
 def argParser(userId, data):
     """
     parse requested data
@@ -157,16 +172,7 @@ def argParser(userId, data):
     new_data['chkbx']     = data.get('chkbx')
     new_data['status']    = str(data.get('status'))
     new_data['status_id'] = str(data.get('status_id'))
-    new_data['action']    = data.get('action')
-    
-    all_status = ['wtg', 'ip', 'done', 'fix']
-    new_data['all_status'] = []
-
-    for status in all_status:
-        if status == new_data['status']:
-            new_data['all_status'].append({"s":status, "tf":'selected'})
-        else:
-            new_data['all_status'].append({"s":status, "tf":''})
+    new_data['action']    = data.get('action')    
 
     return new_data
 
