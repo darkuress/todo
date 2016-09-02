@@ -1,0 +1,25 @@
+td,th#myTable{    
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    padding-left : 50px;
+    padding-right : 50px;
+}   
+
+/*#myTable td, #myTable th {
+    border: 1px solid #ddd;
+    text-align: center;
+    padding: 5px;
+}
+*/
+tr#myTable :nth-child(even){
+    background-color: #f2f2f2;
+}
+
+tr#myTable :hover {background-color: #ddd;}
+
+th#myTable{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #4CAF50;
+    color: white;
+}
