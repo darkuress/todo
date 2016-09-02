@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #myTable, td,th{    
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            padding: 5px;
+            padding-left : 5px;
+            padding-right : 5px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+                
+        #myTable, tr{
+            background-color: #DDFFD3;
+        }
+
+        #myTable, tr:nth-child(even){
+            background-color: #CDFCC2;
+        }
+        
+        #myTable, tr:hover {background-color: #ddd;}
+        
+        #myTable, th{
+            padding-top: 5px;
+            padding-bottom: 5px;
+            background-color: #4CAF50;
+            color: white;
+        }
+        #myTable, td{
+            padding-top: 5px;
+            padding-bottom: 5px;
+            color: black;
+        }
+        
+        select {
+            width: 80px;
+            height: 25px;
+            overflow: hidden;
+            background: url(new_arrow.png) no-repeat right #ddd;
+            border: 2px solid #ccc;
+        }
+        p{
+                font-family: times, Times New Roman, times-roman, georgia, serif;
+		font-size: 30px;
+	        line-height: 40px;
+	        letter-spacing: 1px;
+		color: #444;
+		margin: 0 0 0 0;
+		padding: 0 0 0 0;
+                font-weight: 100;            
+        }
+        button{
+            display: inline-block;
+            color: #666;
+            background-color: #eee;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 10px;
+            padding: 10px 62px;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border: 1px solid rgba(0,0,0,0.3);
+            border-bottom-width: 3px;            
+        }
+        button:hover{
+            display: inline-block;
+            color: #FF6D70;
+            background-color: #D1EBFF;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 10px;
+            padding: 10px 62px;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border: 1px solid rgba(0,0,0,0.3);
+            border-bottom-width: 3px;            
+        }
+    </style>
+</head>
+<body>
+
+<p>My Todo List</p><br>
+
+<form action="/updateData" method="post" id="updateDataForm">
+    <table id="myTable">
+        <thead>
+        <tr>
+            <th>Check</th>
+            <th>Status</th>
+            <th>Content</th>
+            <th>Requested By</th>
+        </tr>
+	{% for one in templateData %}
+        <tr>
+            <td><input type="checkbox" id={{one.chkbx}}></td>
+            <td><select id={{one.status_id}} onclick="udpateData(this)">
+                {% for status in one.all_status %}
+                    <option value="{{status.s}}" {{status.tf}}>{{status.s}}</option>
+                {% endfor %}
+                </select>
+            <td>{{one.what}}</td>
+            <td>{{one.who}}</td>
+        </tr>
+        {% endfor %}
+        </thead>
+    </table>
+    <br><br><br>
+
+    <input id="content" placeholder="What to do"/><input id="person" placeholder="Requested By"/><br><br>
+    <button onclick="createRow()" >Insert</button><button onclick="deleteRow()" type="submit">Delete</button>
+    <input type="hidden" id="userId" name="userId" value={{userId}}>
+    <script>
+    function createRow() {
+        var table = document.getElementById("myTable");
+        var checkBoxNum = document.getElementById("myTable").rows.length;
+        var contentTyped = document.getElementById("content").value;
+        var personTyped = document.getElementById("person").value;        
+
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="chkbx"\
+                                                                 name="chkbx" \
+                                                                 value="chkbx">'
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="person"\
+                                                                 name="person" \
+                                                                 value="'+personTyped+'">'
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="content"\
+                                                                 name="content" \
+                                                                 value="'+contentTyped+'">'
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="status"\
+                                                                 name="status" \
+                                                                 value="wtg">'
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="status_id"\
+                                                                 name="status_id" \
+                                                                 value="">'
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="action"\
+                                                                 name="action" \
+                                                                 value="create">'
+        document.getElementById("updateDataForm").submit()
+    }
+    
+    function deleteRow(){
+        var table = document.getElementById("myTable");
+        var checkBoxNum = document.getElementById("myTable").rows.length;
+    
+        var i = 0
+        var chklist = [];
+        for(count = 1; count < checkBoxNum; count++){
+            var row = table.rows[count];
+            var chkbox = row.cells[0].getElementsByTagName('input')[0];
+            if('checkbox' == chkbox.type && true == chkbox.checked) {
+                //table.deleteRow(count);
+                chklist[i] = chkbox.id;
+                i = i+1;
+            }
+        }
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="chkbx"\
+                                                                 name="chkbx" \
+                                                                 value=' + chklist + '>'
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="person"\
+                                                                 name="person" \
+                                                                 value="">'
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="content"\
+                                                                 name="content" \
+                                                                 value="">'
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="status"\
+                                                                 name="status" \
+                                                                 value="">'
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="status_id"\
+                                                                 name="status_id" \
+                                                                 value="na">'
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="action"\
+                                                                 name="action" \
+                                                                 value="delete">'
+        document.getElementById("updateDataForm").submit();
+    }
+    
+    function udpateData(sel){
+        var selid = sel.id;
+        var value = sel.value;  
+
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="chkbx"\
+                                                                 name="chkbx" \
+                                                                 value="">'
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="person"\
+                                                                 name="person" \
+                                                                 value="">'
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="content"\
+                                                                 name="content" \
+                                                                 value="">'
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="status"\
+                                                                 name="status" \
+                                                                 value="'+value+'">'
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="status_id"\
+                                                                 name="status_id" \
+                                                                 value="'+selid+'">'
+        document.getElementById("updateDataForm").innerHTML += '<input type="hidden"\
+                                                                 id="action"\
+                                                                 name="action" \
+                                                                 value="update">'
+        document.getElementById("updateDataForm").submit();        
+        
+    }
+        
+    </script>
+</form>
+</body>
+</html>
