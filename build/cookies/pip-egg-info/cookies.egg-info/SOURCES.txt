@@ -1,8 +1,0 @@
-README
-cookies.py
-setup.cfg
-test_cookies.py
-pip-egg-info/cookies.egg-info/PKG-INFO
-pip-egg-info/cookies.egg-info/SOURCES.txt
-pip-egg-info/cookies.egg-info/dependency_links.txt
-pip-egg-info/cookies.egg-info/top_level.txt
